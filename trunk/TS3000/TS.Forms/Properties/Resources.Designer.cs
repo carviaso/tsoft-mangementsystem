@@ -81,6 +81,13 @@ namespace TS.Forms.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap back {
+            get {
+                object obj = ResourceManager.GetObject("back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Bank {
             get {
                 object obj = ResourceManager.GetObject("Bank", resourceCulture);
@@ -147,6 +154,13 @@ namespace TS.Forms.Properties {
         internal static System.Drawing.Bitmap line {
             get {
                 object obj = ResourceManager.GetObject("line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap line1 {
+            get {
+                object obj = ResourceManager.GetObject("line1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

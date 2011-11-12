@@ -53,14 +53,27 @@
             this.dAuditDate = new TS.Sys.Widgets.LabelEdit();
             this.cBank = new TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer();
             this.labelEdit1 = new TS.Sys.Widgets.LabelEdit();
-            this.gridSum = new System.Windows.Forms.DataGridView();
-            this.CostTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AmtSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.iPayAmtSum = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label3_value = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label5_value = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tpControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFaType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSum)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -76,7 +89,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1042, 637);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(865, 661);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // toolCostDetail
@@ -84,7 +97,7 @@
             this.toolCostDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolCostDetail.Location = new System.Drawing.Point(1, 1);
             this.toolCostDetail.Name = "toolCostDetail";
-            this.toolCostDetail.Size = new System.Drawing.Size(1040, 45);
+            this.toolCostDetail.Size = new System.Drawing.Size(863, 45);
             this.toolCostDetail.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -102,7 +115,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.41688F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.58312F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1034, 583);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(857, 607);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // txtFaTypeDetail
@@ -112,7 +125,7 @@
             this.txtFaTypeDetail.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtFaTypeDetail.Location = new System.Drawing.Point(3, 0);
             this.txtFaTypeDetail.Name = "txtFaTypeDetail";
-            this.txtFaTypeDetail.Size = new System.Drawing.Size(1028, 43);
+            this.txtFaTypeDetail.Size = new System.Drawing.Size(851, 45);
             this.txtFaTypeDetail.TabIndex = 1;
             this.txtFaTypeDetail.Text = "费用支出单";
             this.txtFaTypeDetail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,8 +156,8 @@
             this.tpControl.Controls.Add(this.dAuditDate, 2, 6);
             this.tpControl.Controls.Add(this.cBank, 0, 2);
             this.tpControl.Controls.Add(this.labelEdit1, 1, 2);
-            this.tpControl.Controls.Add(this.gridSum, 2, 4);
-            this.tpControl.Location = new System.Drawing.Point(3, 46);
+            this.tpControl.Controls.Add(this.panel1, 2, 4);
+            this.tpControl.Location = new System.Drawing.Point(3, 48);
             this.tpControl.Name = "tpControl";
             this.tpControl.RowCount = 7;
             this.tpControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -155,7 +168,7 @@
             this.tpControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tpControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tpControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tpControl.Size = new System.Drawing.Size(1028, 534);
+            this.tpControl.Size = new System.Drawing.Size(851, 556);
             this.tpControl.TabIndex = 5;
             // 
             // cSupply
@@ -165,10 +178,10 @@
             this.cSupply.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cSupply.Label = "供应商：";
             this.cSupply.LabelWidth = 75;
-            this.cSupply.Location = new System.Drawing.Point(687, 8);
+            this.cSupply.Location = new System.Drawing.Point(569, 8);
             this.cSupply.Name = "cSupply";
             this.cSupply.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
-            this.cSupply.Size = new System.Drawing.Size(338, 29);
+            this.cSupply.Size = new System.Drawing.Size(279, 29);
             this.cSupply.TabIndex = 2;
             this.cSupply.Value = null;
             // 
@@ -182,7 +195,7 @@
             this.cSettleAcct.Location = new System.Drawing.Point(3, 51);
             this.cSettleAcct.Name = "cSettleAcct";
             this.cSettleAcct.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.True;
-            this.cSettleAcct.Size = new System.Drawing.Size(336, 26);
+            this.cSettleAcct.Size = new System.Drawing.Size(277, 26);
             this.cSettleAcct.TabIndex = 3;
             this.cSettleAcct.Value = null;
             // 
@@ -193,10 +206,10 @@
             this.cSettleType.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cSettleType.Label = "结算方式：";
             this.cSettleType.LabelWidth = 75;
-            this.cSettleType.Location = new System.Drawing.Point(345, 51);
+            this.cSettleType.Location = new System.Drawing.Point(286, 51);
             this.cSettleType.Name = "cSettleType";
             this.cSettleType.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
-            this.cSettleType.Size = new System.Drawing.Size(336, 26);
+            this.cSettleType.Size = new System.Drawing.Size(277, 26);
             this.cSettleType.TabIndex = 4;
             this.cSettleType.Value = null;
             // 
@@ -209,7 +222,7 @@
             this.cCode.Location = new System.Drawing.Point(3, 8);
             this.cCode.Name = "cCode";
             this.cCode.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
-            this.cCode.Size = new System.Drawing.Size(336, 29);
+            this.cCode.Size = new System.Drawing.Size(277, 29);
             this.cCode.TabIndex = 22;
             this.cCode.TextWidth = 100;
             this.cCode.Value = "";
@@ -220,10 +233,10 @@
             this.dDate.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dDate.Label = "单据时间：";
             this.dDate.LabelWidth = 75;
-            this.dDate.Location = new System.Drawing.Point(345, 8);
+            this.dDate.Location = new System.Drawing.Point(286, 8);
             this.dDate.Name = "dDate";
             this.dDate.Require = TS.Sys.Widgets.LabelDateTime.RequireSelect.True;
-            this.dDate.Size = new System.Drawing.Size(336, 29);
+            this.dDate.Size = new System.Drawing.Size(277, 29);
             this.dDate.TabIndex = 1;
             this.dDate.Value = "2011-10-17";
             // 
@@ -232,10 +245,10 @@
             this.cSettleCode.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cSettleCode.Label = "结算编号：";
             this.cSettleCode.LabelWidth = 75;
-            this.cSettleCode.Location = new System.Drawing.Point(687, 51);
+            this.cSettleCode.Location = new System.Drawing.Point(569, 51);
             this.cSettleCode.Name = "cSettleCode";
             this.cSettleCode.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
-            this.cSettleCode.Size = new System.Drawing.Size(338, 26);
+            this.cSettleCode.Size = new System.Drawing.Size(279, 26);
             this.cSettleCode.TabIndex = 5;
             this.cSettleCode.TextWidth = 100;
             this.cSettleCode.Value = "";
@@ -247,10 +260,10 @@
             this.cOperator.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cOperator.Label = "经办人：";
             this.cOperator.LabelWidth = 75;
-            this.cOperator.Location = new System.Drawing.Point(3, 467);
+            this.cOperator.Location = new System.Drawing.Point(3, 489);
             this.cOperator.Name = "cOperator";
             this.cOperator.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
-            this.cOperator.Size = new System.Drawing.Size(336, 26);
+            this.cOperator.Size = new System.Drawing.Size(277, 26);
             this.cOperator.TabIndex = 10;
             this.cOperator.Value = null;
             // 
@@ -261,10 +274,10 @@
             this.cDepartment.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cDepartment.Label = "部门：";
             this.cDepartment.LabelWidth = 75;
-            this.cDepartment.Location = new System.Drawing.Point(345, 467);
+            this.cDepartment.Location = new System.Drawing.Point(286, 489);
             this.cDepartment.Name = "cDepartment";
             this.cDepartment.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
-            this.cDepartment.Size = new System.Drawing.Size(336, 26);
+            this.cDepartment.Size = new System.Drawing.Size(277, 26);
             this.cDepartment.TabIndex = 11;
             this.cDepartment.Value = null;
             // 
@@ -276,10 +289,10 @@
             this.cAuditor.Enabled = false;
             this.cAuditor.Label = "审核人：";
             this.cAuditor.LabelWidth = 75;
-            this.cAuditor.Location = new System.Drawing.Point(345, 505);
+            this.cAuditor.Location = new System.Drawing.Point(286, 527);
             this.cAuditor.Name = "cAuditor";
             this.cAuditor.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.True;
-            this.cAuditor.Size = new System.Drawing.Size(336, 26);
+            this.cAuditor.Size = new System.Drawing.Size(277, 26);
             this.cAuditor.TabIndex = 27;
             this.cAuditor.Value = null;
             // 
@@ -291,10 +304,10 @@
             this.cCreator.Enabled = false;
             this.cCreator.Label = "制单人：";
             this.cCreator.LabelWidth = 75;
-            this.cCreator.Location = new System.Drawing.Point(3, 505);
+            this.cCreator.Location = new System.Drawing.Point(3, 527);
             this.cCreator.Name = "cCreator";
             this.cCreator.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.True;
-            this.cCreator.Size = new System.Drawing.Size(336, 26);
+            this.cCreator.Size = new System.Drawing.Size(277, 26);
             this.cCreator.TabIndex = 29;
             this.cCreator.Value = null;
             // 
@@ -307,7 +320,7 @@
             this.cRemark.Location = new System.Drawing.Point(3, 128);
             this.cRemark.Name = "cRemark";
             this.cRemark.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
-            this.cRemark.Size = new System.Drawing.Size(1022, 29);
+            this.cRemark.Size = new System.Drawing.Size(845, 29);
             this.cRemark.TabIndex = 8;
             this.cRemark.TextWidth = 100;
             this.cRemark.Value = "";
@@ -322,13 +335,16 @@
             this.iPayAmt,
             this.cSubRemark});
             this.tpControl.SetColumnSpan(this.dgFaType, 2);
-            this.dgFaType.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgFaType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgFaType.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgFaType.Location = new System.Drawing.Point(3, 163);
             this.dgFaType.Name = "dgFaType";
             this.dgFaType.RowTemplate.Height = 23;
-            this.dgFaType.Size = new System.Drawing.Size(678, 294);
+            this.dgFaType.Size = new System.Drawing.Size(560, 316);
             this.dgFaType.TabIndex = 9;
+            this.dgFaType.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFaType_CellEnter);
+            this.dgFaType.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFaType_CellLeave);
+            this.dgFaType.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgFaType_RowsAdded);
             // 
             // cCostType
             // 
@@ -357,7 +373,7 @@
             // 
             this.cGUID.Label = "cGUID";
             this.cGUID.LabelWidth = 48;
-            this.cGUID.Location = new System.Drawing.Point(687, 463);
+            this.cGUID.Location = new System.Drawing.Point(569, 485);
             this.cGUID.Name = "cGUID";
             this.cGUID.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cGUID.Size = new System.Drawing.Size(182, 29);
@@ -370,7 +386,7 @@
             // 
             this.cTimeStamp.Label = "cTimeStamp";
             this.cTimeStamp.LabelWidth = 75;
-            this.cTimeStamp.Location = new System.Drawing.Point(687, 83);
+            this.cTimeStamp.Location = new System.Drawing.Point(569, 83);
             this.cTimeStamp.Name = "cTimeStamp";
             this.cTimeStamp.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cTimeStamp.Size = new System.Drawing.Size(228, 29);
@@ -385,10 +401,10 @@
             this.dAuditDate.Enabled = false;
             this.dAuditDate.Label = "审核时间：";
             this.dAuditDate.LabelWidth = 75;
-            this.dAuditDate.Location = new System.Drawing.Point(687, 502);
+            this.dAuditDate.Location = new System.Drawing.Point(569, 524);
             this.dAuditDate.Name = "dAuditDate";
             this.dAuditDate.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
-            this.dAuditDate.Size = new System.Drawing.Size(338, 29);
+            this.dAuditDate.Size = new System.Drawing.Size(279, 29);
             this.dAuditDate.TabIndex = 38;
             this.dAuditDate.TextWidth = 100;
             this.dAuditDate.Value = "";
@@ -403,7 +419,7 @@
             this.cBank.Location = new System.Drawing.Point(3, 90);
             this.cBank.Name = "cBank";
             this.cBank.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
-            this.cBank.Size = new System.Drawing.Size(336, 27);
+            this.cBank.Size = new System.Drawing.Size(277, 27);
             this.cBank.TabIndex = 39;
             this.cBank.Value = null;
             // 
@@ -413,46 +429,170 @@
             this.labelEdit1.Enabled = false;
             this.labelEdit1.Label = "银行账号：";
             this.labelEdit1.LabelWidth = 75;
-            this.labelEdit1.Location = new System.Drawing.Point(345, 88);
+            this.labelEdit1.Location = new System.Drawing.Point(286, 88);
             this.labelEdit1.Name = "labelEdit1";
             this.labelEdit1.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
-            this.labelEdit1.Size = new System.Drawing.Size(336, 29);
+            this.labelEdit1.Size = new System.Drawing.Size(277, 29);
             this.labelEdit1.TabIndex = 40;
             this.labelEdit1.TextWidth = 100;
             this.labelEdit1.Value = "";
             // 
-            // gridSum
+            // panel1
             // 
-            this.gridSum.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridSum.ColumnHeadersHeight = 35;
-            this.gridSum.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CostTypeName,
-            this.AmtSum});
-            this.gridSum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSum.Location = new System.Drawing.Point(687, 163);
-            this.gridSum.Name = "gridSum";
-            this.gridSum.RowTemplate.Height = 23;
-            this.gridSum.Size = new System.Drawing.Size(338, 294);
-            this.gridSum.TabIndex = 41;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::TS.Forms.Properties.Resources.back;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.tableLayoutPanel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(569, 163);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(279, 316);
+            this.panel1.TabIndex = 41;
             // 
-            // CostTypeName
+            // tableLayoutPanel3
             // 
-            this.CostTypeName.HeaderText = "支出类别";
-            this.CostTypeName.Name = "CostTypeName";
-            this.CostTypeName.ReadOnly = true;
+            this.tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(279, 316);
+            this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // AmtSum
+            // tableLayoutPanel5
             // 
-            this.AmtSum.HeaderText = "总额";
-            this.AmtSum.Name = "AmtSum";
-            this.AmtSum.ReadOnly = true;
+            this.tableLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tableLayoutPanel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.iPayAmtSum, 1, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(14, 230);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(250, 53);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackgroundImage = global::TS.Forms.Properties.Resources.line1;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tableLayoutPanel5.SetColumnSpan(this.panel3, 2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(244, 11);
+            this.panel3.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 14F);
+            this.label2.Location = new System.Drawing.Point(3, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "总计：";
+            // 
+            // iPayAmtSum
+            // 
+            this.iPayAmtSum.AutoSize = true;
+            this.iPayAmtSum.Font = new System.Drawing.Font("宋体", 14F);
+            this.iPayAmtSum.Location = new System.Drawing.Point(107, 17);
+            this.iPayAmtSum.Name = "iPayAmtSum";
+            this.iPayAmtSum.Size = new System.Drawing.Size(0, 19);
+            this.iPayAmtSum.TabIndex = 4;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(14, 4);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(250, 53);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("宋体", 14F);
+            this.label1.Location = new System.Drawing.Point(3, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(244, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "金额合计";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::TS.Forms.Properties.Resources.line1;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 40);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(244, 10);
+            this.panel2.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "label3";
+            // 
+            // label3_value
+            // 
+            this.label3_value.AutoSize = true;
+            this.label3_value.Location = new System.Drawing.Point(23, 0);
+            this.label3_value.Name = "label3_value";
+            this.label3_value.Size = new System.Drawing.Size(41, 12);
+            this.label3_value.TabIndex = 1;
+            this.label3_value.Text = "label4";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 32);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "label5";
+            // 
+            // label5_value
+            // 
+            this.label5_value.AutoSize = true;
+            this.label5_value.Location = new System.Drawing.Point(23, 30);
+            this.label5_value.Name = "label5_value";
+            this.label5_value.Size = new System.Drawing.Size(41, 12);
+            this.label5_value.TabIndex = 3;
+            this.label5_value.Text = "label6";
             // 
             // CostDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1042, 637);
+            this.ClientSize = new System.Drawing.Size(865, 661);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CostDetailForm";
             this.Text = "CostDetail";
@@ -462,7 +602,12 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tpControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgFaType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSum)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -494,8 +639,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cSubRemark;
         private Sys.Widgets.Refer.WidgetRefer.LabelRefer cBank;
         private Sys.Widgets.LabelEdit labelEdit1;
-        private System.Windows.Forms.DataGridView gridSum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostTypeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AmtSum;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label iPayAmtSum; 
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label3_value;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label5_value;
     }
 }

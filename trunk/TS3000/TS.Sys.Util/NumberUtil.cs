@@ -6,7 +6,7 @@ namespace TS.Sys.Util
 {
     public class NumberUtil
     {
-        public static Object GetAmt(String o)
+        public static Decimal GetAmt(String o)
         {
             o = o.Substring(1);
             Decimal amt = Decimal.Parse(o);
@@ -30,5 +30,7 @@ namespace TS.Sys.Util
             return amt.ToString(precision + "-" + precision + "");
 
         }
+
+         
     }
 }

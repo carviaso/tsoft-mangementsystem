@@ -184,6 +184,12 @@
     <Compile Include="BusinessForm\FA\RevenList.designer.cs">
       <DependentUpon>RevenList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="XmlForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     <EmbeddedResource Include="BusinessForm\FA\RevenList.resx">
       <DependentUpon>RevenList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XmlForm1.resx">
       <DependentUpon>XmlForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -357,6 +366,10 @@
     <ProjectReference Include="..\TS.Sys.Platform.Business\TS.Sys.Platform.Business.csproj">
       <Project>{F9B3FA40-9118-4F1E-BDF2-1ABB26E2857B}</Project>
       <Name>TS.Sys.Platform.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Platform.Exceptions\TS.Sys.Platform.Exceptions.csproj">
+      <Project>{1D8F31F6-4A36-452C-909E-491EDB9B2826}</Project>
+      <Name>TS.Sys.Platform.Exceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\TS.Sys.PlatForm.SysInfo\TS.Sys.PlatForm.SysInfo.csproj">
       <Project>{1773708C-1DC5-46F3-B5BF-3B9BDFCBF826}</Project>
@@ -480,7 +493,12 @@
   <ItemGroup>
     <None Include="Resource\img\line.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resource\img\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\line1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

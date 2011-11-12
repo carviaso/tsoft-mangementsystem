@@ -44,7 +44,7 @@ namespace TS.Forms.BusinessForm.FA
             Hashtable con = new Hashtable();
             con.Add("ToolBtn", this.toolCostDetail);
             con.Add("TpControl", this.tpControl);
-            con.Add("MainInfo", frInfo);
+            con.Add("Info", frInfo);
             con.Add("SubInfo", frsInfo);
             con.Add("Service", frService);
             con.Add("SubGrid", this.dgFaType);

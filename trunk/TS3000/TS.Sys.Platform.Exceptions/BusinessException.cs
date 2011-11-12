@@ -17,20 +17,7 @@ namespace TS.Sys.Platform.Exceptions
         }
         public BusinessException(string message)
             : base(message)//调用基类的构造器
-        {
-            ExceptionResource e = new ExceptionResource();
-            Type t = e.GetType();
-            PropertyInfo pi = t.GetProperty(message);
-            String showMsg = "";
-            if (pi != null)
-            {
-                showMsg = pi.GetValue(e, null).ToString();
-            }
-            else
-            {
-                showMsg = message;
-            }
-            MessageBox.Show(message);
+        { 
         }
         public BusinessException(string message, Exception innerException)
             : base(message, innerException)//调用基类的构造器

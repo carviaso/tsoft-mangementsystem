@@ -126,5 +126,14 @@ namespace TS.Sys.Domain
         /// </summary>
         public static String msgUnAudit = "反审核失败，该单据还未审核！";
         #endregion
+        
+        #region 财务
+        /// <summary>
+        /// 请选择支出类型
+        /// </summary>
+        public static String msgFaCostTypeIsNull = "请选择支出类型！";
+
+        public static String msgFaPayAmtIsNull = "请输入付款金额！";
+        #endregion
     }
 }
