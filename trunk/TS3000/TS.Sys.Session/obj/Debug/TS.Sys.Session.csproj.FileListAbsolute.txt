@@ -1,0 +1,10 @@
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Session\bin\Debug\TS.Sys.Session.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Session\bin\Debug\TS.Sys.Session.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Session\obj\Debug\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Session\obj\Debug\TS.Sys.Session.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Session\obj\Debug\TS.Sys.Session.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Session\bin\Debug\TS.Sys.Session.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Session\bin\Debug\TS.Sys.Session.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Session\obj\Debug\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Session\obj\Debug\TS.Sys.Session.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Session\obj\Debug\TS.Sys.Session.pdb

@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C2D93CE-7DF3-4BD6-AD8A-F72CB120D5B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TS.Forms</RootNamespace>
+    <AssemblyName>TS.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TS.Sys.DBLayer">
+      <HintPath>..\TS.Sys.DBLayer\bin\Debug\TS.Sys.DBLayer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessForm\BS\Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Account.Designer.cs">
+      <DependentUpon>Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\AccountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\AccountDetail.Designer.cs">
+      <DependentUpon>AccountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\BankAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\BankAccount.designer.cs">
+      <DependentUpon>BankAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\BankAccountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\BankAccountDetail.designer.cs">
+      <DependentUpon>BankAccountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Customer.Designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\CustomerDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\CustomerDetail.Designer.cs">
+      <DependentUpon>CustomerDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Department.Designer.cs">
+      <DependentUpon>Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\DepartmentDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\DepartmentDetail.Designer.cs">
+      <DependentUpon>DepartmentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Employee.Designer.cs">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\EmployeeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\EmployeeDetail.Designer.cs">
+      <DependentUpon>EmployeeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\FaType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\FaType.Designer.cs">
+      <DependentUpon>FaType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\FaTypeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\FaTypeDetail.Designer.cs">
+      <DependentUpon>FaTypeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Region.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Region.Designer.cs">
+      <DependentUpon>Region.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\RegionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\RegionDetail.Designer.cs">
+      <DependentUpon>RegionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\SettleType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\SettleType.Designer.cs">
+      <DependentUpon>SettleType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\SettleTypeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\SettleTypeDetail.Designer.cs">
+      <DependentUpon>SettleTypeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Supply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\Supply.Designer.cs">
+      <DependentUpon>Supply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\BS\SupplyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\BS\SupplyDetail.Designer.cs">
+      <DependentUpon>SupplyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\FA\CostDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\FA\CostDetail.designer.cs">
+      <DependentUpon>CostDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\FA\CostList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\FA\CostList.designer.cs">
+      <DependentUpon>CostList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\FA\RevenDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\FA\RevenDetail.designer.cs">
+      <DependentUpon>RevenDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForm\FA\RevenList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForm\FA\RevenList.designer.cs">
+      <DependentUpon>RevenList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XmlForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XmlForm1.Designer.cs">
+      <DependentUpon>XmlForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuListTest\MenuBaseTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuListTest\MenuBaseTest.Designer.cs">
+      <DependentUpon>MenuBaseTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuListTest\MenuFATest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuListTest\MenuFATest.Designer.cs">
+      <DependentUpon>MenuFATest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuListTest\MenuSATest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuListTest\MenuSATest.Designer.cs">
+      <DependentUpon>MenuSATest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuList\MenuBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MenuList\MenuContext.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WelcomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WelcomeForm.Designer.cs">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BusinessForm\BS\Account.resx">
+      <DependentUpon>Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\AccountDetail.resx">
+      <DependentUpon>AccountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\BankAccount.resx">
+      <DependentUpon>BankAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\BankAccountDetail.resx">
+      <DependentUpon>BankAccountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\CustomerDetail.resx">
+      <DependentUpon>CustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\Department.resx">
+      <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\DepartmentDetail.resx">
+      <DependentUpon>DepartmentDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\Employee.resx">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\EmployeeDetail.resx">
+      <DependentUpon>EmployeeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\FaType.resx">
+      <DependentUpon>FaType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\FaTypeDetail.resx">
+      <DependentUpon>FaTypeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\Region.resx">
+      <DependentUpon>Region.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\RegionDetail.resx">
+      <DependentUpon>RegionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\SettleType.resx">
+      <DependentUpon>SettleType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\SettleTypeDetail.resx">
+      <DependentUpon>SettleTypeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\Supply.resx">
+      <DependentUpon>Supply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\BS\SupplyDetail.resx">
+      <DependentUpon>SupplyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\FA\CostDetail.resx">
+      <DependentUpon>CostDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\FA\CostList.resx">
+      <DependentUpon>CostList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\FA\RevenDetail.resx">
+      <DependentUpon>RevenDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForm\FA\RevenList.resx">
+      <DependentUpon>RevenList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XmlForm1.resx">
+      <DependentUpon>XmlForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuListTest\MenuBaseTest.resx">
+      <DependentUpon>MenuBaseTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuListTest\MenuFATest.resx">
+      <DependentUpon>MenuFATest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuListTest\MenuSATest.resx">
+      <DependentUpon>MenuSATest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="WelcomeForm.resx">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TS.Business.FA\TS.Business.FA.csproj">
+      <Project>{514A2E19-5C91-4BF3-99C4-BDBCBE531FAE}</Project>
+      <Name>TS.Business.FA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Domain\TS.Sys.Domain.csproj">
+      <Project>{BB99B8B6-8E24-46E5-80C8-D53CECEDD6E8}</Project>
+      <Name>TS.Sys.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Platform.BaseData\TS.Sys.Platform.BaseData.csproj">
+      <Project>{51FE9BA2-BA38-4986-9F30-9879B15CB8EF}</Project>
+      <Name>TS.Sys.Platform.BaseData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Platform.Business\TS.Sys.Platform.Business.csproj">
+      <Project>{F9B3FA40-9118-4F1E-BDF2-1ABB26E2857B}</Project>
+      <Name>TS.Sys.Platform.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.PlatForm.SysInfo\TS.Sys.PlatForm.SysInfo.csproj">
+      <Project>{1773708C-1DC5-46F3-B5BF-3B9BDFCBF826}</Project>
+      <Name>TS.Sys.PlatForm.SysInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Session\TS.Sys.Session.csproj">
+      <Project>{22AFE77A-B230-4167-936E-8B0157ABE29F}</Project>
+      <Name>TS.Sys.Session</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Util\TS.Sys.Util.csproj">
+      <Project>{21CEDBCD-C024-4FCB-ACCF-8FCF4244A93C}</Project>
+      <Name>TS.Sys.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TS.Sys.Widgets\TS.Sys.PlatForm.Widgets.csproj">
+      <Project>{BE0D2A13-56CF-4130-A473-64533880EBE7}</Project>
+      <Name>TS.Sys.PlatForm.Widgets</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\ArAp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\auditor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Bank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Cancellation.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Delete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Department.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Exit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\FaType.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\MenuBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\MenuSelectedBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\New.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\page-first.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\page-last.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\page-next.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\page-prev.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\preferences-system-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Price.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Refresh.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Region.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Sale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Save.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\See.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\SettleType.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\SysOption.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\unauditor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\unblankout.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Supply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Buyer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\MenuBG.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\Customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\img\line.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
