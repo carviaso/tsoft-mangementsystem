@@ -37,7 +37,7 @@ namespace TS.Sys.Platform.Business.Forms
         /// <param name="con"></param>
         public void InitForm(Hashtable con)
         {
-            toolBtn = (ToolStrip)con["ToolBtn"];
+            toolBtn = (ToolStrip)con["ToolBtn"]; 
             tpControl = (TableLayoutPanel)con["TpControl"];
             if (tpControl != null)
             {
@@ -99,7 +99,7 @@ namespace TS.Sys.Platform.Business.Forms
         /// 初始化单据
         /// </summary>
         /// <param name="rowIndex"></param>
-        public void InitBillFormContent(int rowIndex)
+        public virtual void InitBillFormContent(int rowIndex)
         {
             DataGridViewRow r = dgRowCollection[rowIndex];
             Object cGUID = r.Cells["cGUID"].Value;
@@ -107,8 +107,9 @@ namespace TS.Sys.Platform.Business.Forms
             if (mainResult.Count > 0)
             {
                 SetMainContent(info, (Hashtable)mainResult[0], tpControl);
-            }            
+            }    
         }
+ 
 
         /// <summary>
         /// 设置主表值

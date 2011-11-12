@@ -6,13 +6,18 @@ using TS.Sys.Platform.Business.Info;
 using TS.Sys.Platform.Business.Service;
 using TS.Sys.Platform.Business.Util;
 using TS.Sys.Widgets.Refer.WidgetRefer;
+using TS.Sys.Platform.Exceptions;
+using TS.Sys.Util;
+using TS.Sys.Domain;
+using System.Drawing;
 
 namespace TS.Sys.Platform.Business.Forms
 {
-    public partial class BillTypeForm:DefaultForm
+    public partial class BillTypeForm:DefaultForm,IFormEvents
     {
-         
-        
+
+        private BusinessMainInfo _mainInfo;
+        private AbstractBusinessService _businessService;
       
         //单据子表对象
         private BusinessSubInfo _subInfo;        
@@ -22,7 +27,10 @@ namespace TS.Sys.Platform.Business.Forms
         private string _billType;         
        
         public BillTypeForm()
-        { }
+        {
+            InitButton();
+            Items = this._toolBtn;
+        }
                 
         /// <summary>
         /// 初始化Form
@@ -32,40 +40,37 @@ namespace TS.Sys.Platform.Business.Forms
         /// <param name="con"></param>
         public void InitForm(Hashtable con)
         {
-            
+            base.InitForm(con);
             if (con["Info"] == null)
             {
-                MessageBox.Show("MainInfo属性未设置");
+                throw new BusinessException("MainInfo属性未设置");
             }
-            else if (con["Service"] == null)
+            if (con["Service"] == null)
             {
-                MessageBox.Show("Service属性未设置");
+                throw new BusinessException("Service属性未设置");
             }
-            else if (con["SubGrid"] == null)
+            if (con["SubGrid"] == null)
             {
-                MessageBox.Show("SubGrid属性未设置");
+                throw new BusinessException("SubGrid属性未设置");
             }
             else if (con["BillType"] == null)
             {
-                MessageBox.Show("BillType属性未设置");
+                throw new BusinessException("BillType属性未设置");
             }
-            _toolBtn = (ToolStrip)con["ToolBtn"];
-            _tpControl = (TableLayoutPanel)con["TpControl"];
-            _mainInfo = (BusinessMainInfo)con["MainInfo"];
+            info = (BusinessMainInfo)con["Info"];
+            service = (AbstractBusinessService)con["Service"];
+            _businessService = (AbstractBusinessService)con["Service"];
+            _mainInfo = (BusinessMainInfo)con["Info"];
             _subInfo = (BusinessSubInfo)con["SubInfo"];
-            _service = (AbstractBusinessService)con["Service"];
             _subGrid = (DataGridView)con["SubGrid"];
             _billType = con["BillType"].ToString();
-            if (_tpControl != null)
+            this.FormEvents = this;
+            //如果有子表则添加子表的事件
+            if (_subGrid != null)
             {
-                InitButton();
-                
-                ReferSetInfoStatus(this, btnInfo, _tpControl);
-                if (_subGrid != null)
-                {
-                    BindGridEvent();
-                }
+                BindGridEvent();
             }
+
         }
 
         /// <summary>
@@ -73,7 +78,7 @@ namespace TS.Sys.Platform.Business.Forms
         /// </summary>
         public void InitForm()
         {
-            btnNew_Click(null, null);
+            base.InitForm();
         }
 
         /// <summary>
@@ -82,14 +87,8 @@ namespace TS.Sys.Platform.Business.Forms
         /// <param name="rowIndex"></param>
         /// <param name="ds"></param>
         public void InitForm(int rowIndex, DataGridViewRowCollection ds)
-        {            
-            _ds = ds;
-            _rowindex = rowIndex;
-            if (_ds != null)
-            {
-                InitBillFormContent(_rowindex);                
-            }
-            
+        {
+            base.InitForm(rowIndex,ds);            
         }
 
         /// <summary>
@@ -105,64 +104,21 @@ namespace TS.Sys.Platform.Business.Forms
         /// 初始化单据
         /// </summary>
         /// <param name="rowIndex"></param>
-        public void InitBillFormContent(int rowIndex)
+        public override void  InitBillFormContent(int rowIndex)
         {
-            DataGridViewRow r = _ds[rowIndex];
+            base.InitBillFormContent(rowIndex);
+            DataGridViewRow r = dgRowCollection[rowIndex];
             Object cGUID = r.Cells["cGUID"].Value;
-            ArrayList mainResult = _service.GetMainResult(cGUID);
-            if (mainResult.Count > 0)
-            {
-                SetMainContent(_mainInfo, (Hashtable)mainResult[0], _tpControl);
-            }
             //如果存在子表信息，给子表赋值
             if (_subGrid != null)
             {
-                ArrayList subResult = _service.GetSubResult(cGUID);
+                ArrayList subResult = _businessService.GetSubResult(cGUID);
                 SetSubContent(subResult, _subGrid);                
             }
-            _tpControl.Enabled = (_mainInfo.cAuditor == null);
-        }
- 
+            tpControl.Enabled = (_mainInfo.cAuditor == null);
+        }       
 
-        /// <summary>
-        /// 设置参照控件的坐标变换事件
-        /// </summary>
-        /// <param name="tpControl"></param>
-        public static void ReferSetInfoStatus(Form f,ToolStripButton btn, TableLayoutPanel tpControl)
-        {
-            Assembly tempAssembly = Assembly.GetExecutingAssembly();
-            Type t = tempAssembly.GetType("TS.Sys.Platform.Business.Forms.BillTypeForm");
-            Form o = (Form)System.Activator.CreateInstance(t, null);
-            foreach (Control control in tpControl.Controls)
-            {
-                if (control is LabelRefer)
-                {
-                    ((LabelRefer)control).SetInfoStatus(f,o, btn); 
-                } 
-            }
-        }
-
-
-        /// <summary>
-        /// 设置主表值
-        /// </summary>
-        /// <param name="info"></param>
-        /// <param name="infoDetail"></param>
-        /// <param name="tpControl"></param>
-        private void SetMainContent(Object info, Hashtable infoDetail, TableLayoutPanel tpControl)
-        {
-
-            foreach (String key in infoDetail.Keys)
-            {
-                if (tpControl.Controls.ContainsKey(key))
-                {
-                    Control control = tpControl.Controls[key];
-                    BusinessControl.SetComValue(control, infoDetail[key].ToString());
-                    BusinessControl.SetInfoProperties(info, tpControl);
-                }
-            }
-        }
-
+        
         /// <summary>
         /// 设置子表值
         /// </summary>
@@ -190,19 +146,135 @@ namespace TS.Sys.Platform.Business.Forms
             }
         }
 
-        protected override void OnMove(EventArgs e)
+        private ToolStripButton btnAudit;
+        private ToolStripButton btnUnAudit;
+        private ToolStripItem[] _toolBtn;
+        private void InitButton()
         {
-            base.OnMove(e);
-            if (_tpControl == null)
-                return;
-            foreach (Control control in _tpControl.Controls)
+            btnAudit = new System.Windows.Forms.ToolStripButton();
+            btnUnAudit = new System.Windows.Forms.ToolStripButton();
+            _toolBtn = new ToolStripItem[]{ 
+            btnAudit,
+            btnUnAudit};
+
+            // 
+            // btnAudit
+            // 
+            btnAudit.Image = global::TS.Sys.Platform.Business.Properties.Resources.auditor;
+            btnAudit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnAudit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnAudit.Name = "btnAudit";
+            btnAudit.Size = new System.Drawing.Size(36, 42);
+            btnAudit.Text = "审核";
+            btnAudit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnAudit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            btnAudit.Click += new EventHandler(btnAudit_Click);
+            // 
+            // btnUnAudit
+            // 
+            btnUnAudit.Image = global::TS.Sys.Platform.Business.Properties.Resources.unauditor;
+            btnUnAudit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnUnAudit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnUnAudit.Name = "btnUnAudit";
+            btnUnAudit.Size = new System.Drawing.Size(48, 42);
+            btnUnAudit.Text = "反审核";
+            btnUnAudit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnUnAudit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            btnUnAudit.Click += new EventHandler(btnUnAudit_Click);
+
+        }
+
+        /// <summary>
+        /// 绘制行数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void datagrid_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var dgv = (DataGridView)sender;
+            if (dgv.RowHeadersVisible)
             {
-                if (control is LabelRefer)
-                {
-                    ((LabelRefer)control).LocationChange();
-                }
+                Rectangle rect = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, dgv.RowHeadersWidth, e.RowBounds.Height);
+                rect.Inflate(-2, -2);
+                TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, rect, e.InheritedRowStyle.ForeColor, TextFormatFlags.Right | TextFormatFlags.VerticalCenter);
             }
         }
-        
+
+        /// <summary>
+        /// 数字列右对齐，否则左对齐
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void datagrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
+            //假设vista()方法是验证是否为数字的
+            if (e.RowIndex != -1 && e.ColumnIndex == 1)
+            {
+                e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+            else if (e.RowIndex != -1 && e.ColumnIndex != 1)
+            {
+                e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+        }
+
+        public void New()
+        {
+            String code = BusinessKey.GetBusinessKey().GetBusinessCode(_billType, 3);
+            BusinessControl.SetNewValue(code, tpControl);
+        }
+
+        public void Add()
+        {
+            //添加明细信息
+            if (_subGrid != null)
+            {
+                ArrayList subList = new ArrayList();
+                foreach (DataGridViewRow r in _subGrid.Rows)
+                {
+
+                    if (r.Cells[0].Value != null)
+                    {
+                        BusinessControl.SetSubInfoProperties(_subInfo, r);
+                        subList.Add(_subInfo);
+                    }
+
+                }
+                _mainInfo.SubInfos = subList;
+            }
+            _businessService.DoModify(_mainInfo);
+        }
+
+        public void Modify()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            _businessService.DoDel(_mainInfo);
+        }
+
+        private void btnAudit_Click(object sender, EventArgs e)
+        {
+            _businessService.DoAudit(_mainInfo);
+
+            BusinessControl.SetControlValue(_mainInfo, tpControl);
+            MessageBox.Show("单据[" + _mainInfo.cCode + "]" + SysConst.msgAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
+            tpControl.Enabled = false; 
+        }
+
+        private void btnUnAudit_Click(object sender, EventArgs e)
+        {
+            Result result = new Result();
+            _businessService.DoUnAudit(_mainInfo);
+            BusinessControl.SetControlValue(_mainInfo, tpControl);
+
+            MessageBox.Show("单据[" + _mainInfo.cCode + "]" + SysConst.msgUnAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
+            tpControl.Enabled = true;
+
+        }
     }
 }

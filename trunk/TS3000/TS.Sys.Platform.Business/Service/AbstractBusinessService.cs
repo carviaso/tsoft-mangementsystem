@@ -23,7 +23,6 @@ namespace TS.Sys.Platform.Business.Service
             {
                 return true;
             }
-            else
             {                
                 return false;
             } 

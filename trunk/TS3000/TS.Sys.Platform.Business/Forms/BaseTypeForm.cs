@@ -19,19 +19,13 @@ namespace TS.Sys.Platform.Business.Forms
         /// <param name="con"></param>
         public void InitForm(Hashtable con)
         {
-            try
-            {
-                base.InitForm(con);
-                info = (BaseInfo)con["Info"];
-                _baseInfo = (BaseInfo)con["Info"];
-                service = (AbstractBaseService)con["Service"];
-                _baseService = (AbstractBaseService)con["Service"];
-                this.FormEvents = this;
-            }
-            catch (Exception e)
-            {
 
-            }
+            base.InitForm(con);
+            info = (BaseInfo)con["Info"];
+            _baseInfo = (BaseInfo)con["Info"];
+            service = (AbstractBaseService)con["Service"];
+            _baseService = (AbstractBaseService)con["Service"];
+            this.FormEvents = this;
         }
 
         public void New()

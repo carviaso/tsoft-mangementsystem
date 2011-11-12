@@ -19,7 +19,10 @@ namespace TS.Sys.Platform.Business.Forms
             BusinessControl.ClearControlValue(tpControl);
             if (formEvents != null)
             {
+                //执行自定义新增事件
+                //考虑加入doBefore
                 formEvents.New();
+                //考虑加入doAfter();
             }
         }
 
@@ -38,15 +41,31 @@ namespace TS.Sys.Platform.Business.Forms
             {
                 if (formEvents != null)
                 {
+                    //执行自定义修改事件
+                    //考虑加入doBefore()
                     formEvents.Modify();
+                    //考虑加入doAfter();
                 } 
             }
             else
             {
                 if (formEvents != null)
                 {
+                    //执行自定义修改事件
+                    //考虑加入doBefore()
                     formEvents.Add();
+                    //考虑加入doAfter();
                 } 
+            }
+            //根据保存结果处理 
+            MessageBox.Show(SysConst.msgSaveSuccess);
+            BusinessControl.SetSaveCancelInitStatus(toolBtn);
+            //fcForm.listRefresh();
+            Type t = this.GetType();
+            MethodInfo m = t.GetMethod("listRefersh");
+            if (m != null)
+            {
+                m.Invoke(this, null);
             }
             
         }
@@ -60,7 +79,10 @@ namespace TS.Sys.Platform.Business.Forms
             }
             if (formEvents != null)
             {
+                //执行自定义修改事件
+                //考虑加入doBefore()
                 formEvents.Delete();
+                //考虑加入doAfter();
             }
         }
 
