@@ -2,6 +2,8 @@
 using TS.Sys.Domain; 
 using TS.Sys.Util;
 using TS.Sys.Platform.Business.Info;
+using TS.Sys.Platform.Exceptions;
+using System.Windows.Forms;
 
 namespace TS.Sys.Platform.Business.Service
 {
@@ -14,110 +16,120 @@ namespace TS.Sys.Platform.Business.Service
         /// <param name="bmi"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool ValidataForTimeStamp(BusinessMainInfo bmi)
+        public void ValidataForTimeStamp(BusinessMainInfo bmi)
         {
             Hashtable con = new Hashtable();
             con.Add("cTimeStamp",bmi.cTimeStamp);
             ArrayList list = BusinessDao.GetValidatation(con);
-            if (list.Count > 0)
+            if (list.Count <= 0)
             {
-                return true;
+                throw new BusinessException(ExceptionConst.Error_TimeStamp);
             }
-            {                
-                return false;
-            } 
         }
 
         /// <summary>
-        /// 审核状态校验,已审核返回true,未审核返回false;
+        /// 审核状态校验
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool ValidataForAudit(BusinessMainInfo bmi)
+        public void ValidataForAudit(BusinessMainInfo bmi)
+        {
+
+            ArrayList list = BusinessDao.GetAuditStatus(bmi.cGUID);
+            if (list.Count <= 0)
+            {
+                throw new BusinessException(ExceptionConst.Error_Audit);
+            }
+        }
+
+        /// <summary>
+        /// 反审核状态校验
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public void ValidataForUnAudit(BusinessMainInfo bmi)
         {
 
             ArrayList list = BusinessDao.GetAuditStatus(bmi.cGUID);
             if (list.Count > 0)
             {
-                 return false;
+                throw new BusinessException(ExceptionConst.Error_UnAudit);
             }
-            else
-            {
-                
-                return true;
-            } 
         }
 
-        public bool ValidataForCodeExists(Result result)
+        public void ValidataForCodeExists()
         {
-            return true;
-        }
-
-        public Result DoDel(BusinessMainInfo bmi)
-        {
-            Result result = new Result();
-            if (!ValidataForTimeStamp(bmi))
-            {
-                result.Message = SysConst.msgTimeStamp;
-                return result; 
-            }
-            return Del(bmi);
-        }
-
-        public Result DoAdd(BusinessMainInfo bmi)
-        {
-            Result result = new Result();
-            if (!ValidataForCodeExists(result))
-            {
-                result.Message = SysConst.msgAddFaildForCodeExists;
-                return result;
-            }
-            return Add(bmi);
             
         }
 
-        public Result DoModify(BusinessMainInfo bmi)
+        /// <summary>
+        /// 删除操作
+        /// 1、时间戳校验
+        /// 2、审核校验
+        /// </summary>
+        /// <param name="bmi"></param>
+        public void DoDel(BusinessMainInfo bmi)
         {
-            Result result = new Result();
-            if (!ValidataForTimeStamp(bmi))
-            {
-                result.Message = SysConst.msgTimeStamp;
-                return result;
-            }
-            return Modify(bmi);
+
+            ValidataForTimeStamp(bmi);
+            ValidataForAudit(bmi);
+            Del(bmi);
+
         }
 
-        public Result DoAudit(BusinessMainInfo bmi)
+        /// <summary>
+        /// 新增保存操作
+        /// </summary>
+        /// <param name="bmi"></param>
+        public void DoAdd(BusinessMainInfo bmi)
         {
-            Result result = new Result();
-            if (!ValidataForTimeStamp(bmi))          
-            {
-                result.Message = SysConst.msgTimeStamp;
-                return result;
-            }
-            if (ValidataForAudit(bmi))
-            {
-                result.Message = SysConst.msgAudit;
-                return result;
-            }
-            return Audit(bmi);            
+
+            ValidataForCodeExists();
+            Add(bmi);
+
+
         }
 
-        public Result DoUnAudit(BusinessMainInfo bmi)
+        /// <summary>
+        /// 修改保存操作
+        /// 1、时间戳校验
+        /// </summary>
+        /// <param name="bmi"></param>
+        public void DoModify(BusinessMainInfo bmi)
         {
-            Result result = new Result();
-            if (!ValidataForTimeStamp(bmi))
-            {
-                result.Message = SysConst.msgTimeStamp;
-                return result;
-            }
-            if (!ValidataForAudit(bmi))
-            {
-                result.Message = SysConst.msgUnAudit;
-                return result;
-            }
 
-            return UnAudit(bmi);
+            ValidataForTimeStamp(bmi); 
+            Modify(bmi);
+
+        }
+
+        /// <summary>
+        /// 审核操作
+        /// 1、时间戳校验
+        /// 2、审核校验
+        /// </summary>
+        /// <param name="bmi"></param>
+        public void DoAudit(BusinessMainInfo bmi)
+        {
+            ValidataForTimeStamp(bmi);
+            ValidataForAudit(bmi);
+            Audit(bmi);
+
+        }
+
+        /// <summary>
+        /// 反审核操作
+        /// 1、时间戳校验
+        /// 2、审核校验
+        /// </summary>
+        /// <param name="bmi"></param>
+        public void DoUnAudit(BusinessMainInfo bmi)
+        {
+
+            ValidataForTimeStamp(bmi);
+            ValidataForUnAudit(bmi);
+            UnAudit(bmi);
+
         }
 
         public ArrayList GetSubResult(object cHeadGUID)

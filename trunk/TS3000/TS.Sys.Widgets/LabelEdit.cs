@@ -10,6 +10,14 @@ namespace TS.Sys.Widgets
 {
     public partial class LabelEdit : UserControl
     {
+        public bool _requireFlag;
+        private RequireSelect _require;
+        public enum RequireSelect
+        {
+            True,
+            False,
+        }
+
         public LabelEdit()
         {
             InitializeComponent();
@@ -27,15 +35,11 @@ namespace TS.Sys.Widgets
         }
 
 
-        public bool _requireFlag;
-        private RequireSelect _require;
-        public enum RequireSelect
-        {
-            True,
-            False,
-        }
+        
  
-
+        /// <summary>
+        /// 是否必填项
+        /// </summary>
         public  RequireSelect Require
         {
             set
@@ -52,6 +56,7 @@ namespace TS.Sys.Widgets
                 else
                 {
                     _requireFlag = false;
+                    if(!_requireFlag&&!Enabled)
                     this.textBox.BackColor = SystemColors.HighlightText;
                 }
 
@@ -70,7 +75,9 @@ namespace TS.Sys.Widgets
             
         }
 
-
+        /// <summary>
+        /// 控件是否可用
+        /// </summary>
         public Boolean Enabled
         {
             set

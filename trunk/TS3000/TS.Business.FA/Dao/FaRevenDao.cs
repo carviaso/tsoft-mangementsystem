@@ -23,6 +23,7 @@ namespace TS.Business.FA.Dao
         public FaRevenDao()
         {
             base.TableName = MAIN_TABLE;
+            base.SubTableName = SUB_TABLE;
         }
 
         public void addMain(FaRevenInfo fi)

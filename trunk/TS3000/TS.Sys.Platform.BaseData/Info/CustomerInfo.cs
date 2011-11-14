@@ -15,13 +15,7 @@ namespace TS.Sys.Platform.BaseData.Info
         private object _cFax;
         private object _cBank;
         private object _cBankAccount;
-        private object _iForbidden = 0;
-
-        public Object iForbidden
-        {
-            get { return this._iForbidden; }
-            set { this._iForbidden = value; }
-        }
+         
 
         public Object cFullName
         {

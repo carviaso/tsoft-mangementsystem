@@ -25,6 +25,8 @@ namespace TS.Sys.Widgets.Refer.Control
         private DataFetcher _dataFetcher;
         private string _referForm;
         private bool _IsPress = false;
+        private Hashtable _referMapping;
+        private TableLayoutPanel _tpControl;
         
         #endregion
         #region 构造函数
@@ -34,7 +36,16 @@ namespace TS.Sys.Widgets.Refer.Control
             initDropDown();
             _referValue = new Hashtable();
         }
-        
+
+        public TableLayoutPanel TpControl
+        {
+            set { this._tpControl = value; }
+        }
+
+        public Hashtable ReferMapping
+        {
+            set { this._referMapping = value; }
+        }
 
         public String ReferForm
         {
@@ -86,10 +97,10 @@ namespace TS.Sys.Widgets.Refer.Control
             Object cCode = DataGridView.SelectedRows[0].Cells["cCode"].Value;
             Object cName = DataGridView.SelectedRows[0].Cells["cName"].Value;
             Hashtable referValue = new Hashtable();
-            referValue.Add("cCode",cCode);
-            referValue.Add("cName", cName);
-            _referValue = referValue;
-            Text = cCode.ToString(); 
+            if (_dataFetcher!= null)
+                this._referValue = _dataFetcher.GetReferResult(cCode);
+            Text = cCode.ToString();
+            SetReferConValue();
             dropDown.Close();            
         }
 
@@ -168,11 +179,13 @@ namespace TS.Sys.Widgets.Refer.Control
                 {
                     this._referValue = _dataFetcher.GetReferResult(value);
                     Text = this._referValue["cName"].ToString();
+                    SetReferConValue();
                 }
                 else
                 {
                     _referValue = null;
                     Text = null;
+                    SetReferConNull();
                 }
             }
             get
@@ -188,6 +201,32 @@ namespace TS.Sys.Widgets.Refer.Control
             }
             
         }
+
+        private void SetReferConValue()
+        {
+            if (_referMapping != null && _tpControl != null)
+            {
+                foreach (String key in _referMapping.Keys)
+                {
+                    if (_tpControl.Controls[key] != null)
+                        ((LabelEdit)_tpControl.Controls[key]).Value = _referValue[_referMapping[key]];
+                }
+            }
+        }
+
+        private void SetReferConNull()
+        {
+            if (_referMapping != null && _tpControl != null)
+            {
+                foreach (String key in _referMapping.Keys)
+                {
+                    if (_tpControl.Controls[key] != null)
+                        ((LabelEdit)_tpControl.Controls[key]).Value = null;
+                }
+            }
+        }
+
+
 
        
         #endregion
@@ -254,18 +293,26 @@ namespace TS.Sys.Widgets.Refer.Control
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
+            String str = Text;
             if (_IsDropShow)
             {
                 dropDown.Close();
                 _IsDropShow = false;
             }
-            if (_referValue != null && _referValue["cCode"] != null)
+
+            if (!String.IsNullOrEmpty(str))
             {
-                Text = _referValue["cName"].ToString();
+                if (_dataFetcher != null)
+                {
+                    this._referValue = _dataFetcher.GetReferResult(str);
+                }
+                Text = this._referValue["cName"].ToString();
+
             }
             else
             {
                 Text = null;
+                SetReferConNull();
             }
             _IsPress = false;
         }

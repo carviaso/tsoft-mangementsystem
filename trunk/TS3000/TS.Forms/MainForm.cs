@@ -34,6 +34,7 @@ namespace TS.Forms
             welForm.MdiParent = this;
             AddForm();
             welForm.Show();
+            
         }
 
         private void 科目管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,6 +81,11 @@ namespace TS.Forms
         private void btnCascade_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+        }
+
+        private void MainForm_MdiChildActivate(object sender, EventArgs e)
+        {
+            String tset = "asdf";
         }
  
         

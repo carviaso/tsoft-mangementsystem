@@ -23,7 +23,7 @@ namespace TS.Sys.Platform.Business.Service
             ArrayList list = ((BaseDao)Daos).GetValidatation(con);
             if (list.Count <= 0)
             {
-                throw new BusinessException(ExceptionConst.Error_cTimeStamp);
+                throw new BusinessException(ExceptionConst.Error_TimeStamp);
             }
         }
 
@@ -34,7 +34,14 @@ namespace TS.Sys.Platform.Business.Service
         /// <returns></returns>
         public void ValidataForForbidden(BaseInfo bi)
         {
-            
+            Hashtable con = new Hashtable();
+            con.Add("iForbidden",1);
+            con.Add("cGUID", bi.cGUID);
+            ArrayList list = ((BaseDao)Daos).GetValidatation(con);
+            if (list.Count <= 0)
+            {
+                throw new BusinessException(ExceptionConst.Error_Forbidden);
+            }
         }
 
         /// <summary>
@@ -44,7 +51,14 @@ namespace TS.Sys.Platform.Business.Service
         /// <returns></returns>
         public void ValidataForValueable(BaseInfo bi)
         {
-           
+            Hashtable con = new Hashtable();
+            con.Add("iForbidden", 0);
+            con.Add("cGUID", bi.cGUID);
+            ArrayList list = ((BaseDao)Daos).GetValidatation(con);
+            if (list.Count <= 0)
+            {
+                throw new BusinessException(ExceptionConst.Error_Valueable);
+            }
         }
 
         /// <summary>
@@ -91,6 +105,7 @@ namespace TS.Sys.Platform.Business.Service
             try
             {
                 ValidataForTimeStamp(bi);
+                ValidataForForbidden(bi);
                 Modify(bi);
             }
             catch (BusinessException e)
@@ -104,6 +119,7 @@ namespace TS.Sys.Platform.Business.Service
             try
             {
                 ValidataForTimeStamp(bi);
+                ValidataForForbidden(bi);
                 Forbidden(bi);
             }
             catch (BusinessException e)
@@ -117,6 +133,7 @@ namespace TS.Sys.Platform.Business.Service
             try
             {
                 ValidataForTimeStamp(bi);
+                ValidataForValueable(bi);
                 Valueable(bi);
             }
             catch (BusinessException e)

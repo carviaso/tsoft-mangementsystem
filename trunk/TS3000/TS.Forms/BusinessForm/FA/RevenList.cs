@@ -6,7 +6,8 @@ using TS.Business.FA.Service;
 using TS.Sys.Domain;
 using TS.Sys.Util;
 using TS.Business.FA.Info;
-using TS.Sys.Platform.Business.Util; 
+using TS.Sys.Platform.Business.Util;
+using TS.Sys.Platform.Exceptions; 
 
 namespace TS.Forms.BusinessForm.FA
 {
@@ -39,12 +40,19 @@ namespace TS.Forms.BusinessForm.FA
         private void btnDelete_Click(object sender, EventArgs e)
         {
             BusinessControl.SetInfoByGrid(frInfo, this.gridFaReven);
-            DialogResult diaResult = MessageBox.Show("是否删除单据[" + frInfo.cCode + "]？", SysConst.msgDeleteConfirm, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult diaResult = Msg.Show("是否删除单据[" + frInfo.cCode + "]？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (diaResult == DialogResult.OK)
             {
-                Result operResult = frService.DoDel(frInfo);
-                MessageBox.Show(SysConst.msgDeleteSuccess);
-                btnRefresh_Click(sender, e);
+                try
+                {
+                    frService.DoDel(frInfo);
+                    Msg.Show(SysConst.msgDeleteSuccess);
+                    btnRefresh_Click(sender, e);
+                }
+                catch (BusinessException ex)
+                {
+                    Msg.Show(ex.Message);
+                }
             }
         }
 
@@ -105,15 +113,29 @@ namespace TS.Forms.BusinessForm.FA
         private void btnAudit_Click(object sender, EventArgs e)
         {
             BusinessControl.SetInfoByGrid(frInfo, this.gridFaReven);
-            frService.DoAudit(frInfo);
-            MessageBox.Show("单据[" + frInfo.cCode + "]" + SysConst.msgAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
+            try
+            {
+                frService.DoAudit(frInfo);
+                Msg.Show("单据[" + frInfo.cCode + "]" + SysConst.msgAuditSuccess);
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         private void btnUnAudit_Click(object sender, EventArgs e)
         {
-            BusinessControl.SetInfoByGrid(frInfo, this.gridFaReven); 
-            frService.UnAudit(frInfo);
-            MessageBox.Show("单据[" + frInfo.cCode + "]" + SysConst.msgUnAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
+            BusinessControl.SetInfoByGrid(frInfo, this.gridFaReven);
+            try
+            {
+                frService.UnAudit(frInfo);
+                Msg.Show("单据[" + frInfo.cCode + "]" + SysConst.msgUnAuditSuccess);
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         private void gridFaReven_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

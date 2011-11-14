@@ -28,7 +28,7 @@ namespace TS.Sys.Widgets.Refer.Control
 
         public Hashtable GetReferResult(Object cCode)
         {
-            String sql = "select cCode,cName from " + _tableName+" where cCode = '"+cCode+"'";
+            String sql = "select * from " + _tableName+" where cCode = '"+cCode+"' or cName = '"+cCode+"'";
             ArrayList result = DbSvr.GetDbService().GetListResult(sql);
             if (result.Count < 0)
                 return null;

@@ -5,16 +5,9 @@ namespace TS.Sys.Platform.BaseData.Info
 {
     public class DepartmentInfo:BaseInfo
     {
-        private object _iForbidden = 0;
         private object _cFullName;
         private object _cParent;
-        private object _cRemark;
-
-        public Object iForbidden
-        {
-            get { return this._iForbidden; }
-            set { this._iForbidden = value; }
-        }
+        private object _cRemark;    
 
         public Object cFullName
         {

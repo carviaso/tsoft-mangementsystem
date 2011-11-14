@@ -144,7 +144,7 @@ namespace TS.Sys.Platform.Business.Forms
             {
                 if (control is LabelRefer)
                 {
-                    ((LabelRefer)control).SetInfoStatus(f, o, btn);
+                    ((LabelRefer)control).SetInfoStatus(f, o, btn,tpControl);
                 }
             }
         }

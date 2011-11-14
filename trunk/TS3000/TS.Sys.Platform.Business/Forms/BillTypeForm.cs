@@ -24,8 +24,18 @@ namespace TS.Sys.Platform.Business.Forms
         //子表
         private DataGridView _subGrid;
 
-        private string _billType;         
-       
+        private DataGridView _sumGrid;
+
+        private IFormPointCut _formPoint;
+
+        private string _billType;
+
+
+        public IFormPointCut FormPoint
+        {
+            set { this._formPoint = value; }
+        }
+
         public BillTypeForm()
         {
             InitButton();
@@ -63,6 +73,7 @@ namespace TS.Sys.Platform.Business.Forms
             _mainInfo = (BusinessMainInfo)con["Info"];
             _subInfo = (BusinessSubInfo)con["SubInfo"];
             _subGrid = (DataGridView)con["SubGrid"];
+            _sumGrid  = (DataGridView)con["SumGrid"];
             _billType = con["BillType"].ToString();
             this.FormEvents = this;
             //如果有子表则添加子表的事件
@@ -113,9 +124,19 @@ namespace TS.Sys.Platform.Business.Forms
             if (_subGrid != null)
             {
                 ArrayList subResult = _businessService.GetSubResult(cGUID);
-                SetSubContent(subResult, _subGrid);                
+                if (_sumGrid != null)
+                {
+                    _sumGrid.Rows.Clear();
+                }
+                SetSubContent(subResult, _subGrid);
+                tpControl.GetNextControl(_sumGrid, true);
             }
             tpControl.Enabled = (_mainInfo.cAuditor == null);
+            //数据装载后执行
+            if (_formPoint != null)
+            {
+                _formPoint.doAfterLoad();
+            }
         }       
 
         
@@ -132,17 +153,17 @@ namespace TS.Sys.Platform.Business.Forms
                 Hashtable detail = (Hashtable)result[i];
                 Object[] cellValues = new Object[detail.Count];
                 int index = 0;
-                foreach (String key in detail.Keys)
+                foreach (DataGridViewColumn col in grid.Columns)
                 {
-                    if (key.Equals("cGUID") || key.Equals("cHeadGUID") || key.Equals("cTimeStamp"))
+                    if (detail[col.Name] != null)
                     {
-                        continue;
+                        Object value = detail[col.Name];
+                        cellValues[index] = value;
+                        index++;
                     }
-                    Object value = detail[key]; 
-                    cellValues[index] = value;
-                    index++;
-                }
+                } 
                 grid.Rows.Add(cellValues);
+                
             }
         }
 
@@ -224,56 +245,114 @@ namespace TS.Sys.Platform.Business.Forms
         {
             String code = BusinessKey.GetBusinessKey().GetBusinessCode(_billType, 3);
             BusinessControl.SetNewValue(code, tpControl);
+            if (_subGrid != null)
+            {
+                _subGrid.Rows.Clear();
+            }
+            if (_sumGrid != null)
+            {
+                _sumGrid.Rows.Clear();
+            }
         }
 
         public void Add()
         {
-            //添加明细信息
-            if (_subGrid != null)
+            try
             {
-                ArrayList subList = new ArrayList();
-                foreach (DataGridViewRow r in _subGrid.Rows)
+                //添加明细信息
+                if (_subGrid != null)
                 {
-
-                    if (r.Cells[0].Value != null)
+                    ArrayList subList = new ArrayList();
+                    foreach (DataGridViewRow r in _subGrid.Rows)
                     {
-                        BusinessControl.SetSubInfoProperties(_subInfo, r);
-                        subList.Add(_subInfo);
-                    }
+                        // _subInfo = new BusinessSubInfo();
+                        //BusinessControl.SetInfoNull(_subInfo);
+                        if (r.Cells[0].Value != null)
+                        {
+                            Hashtable subHash = BusinessControl.SetSubInfoProperties(_subInfo, r);
+                            subList.Add(subHash);
+                        }
 
+                    }
+                    _mainInfo.SubInfos = subList;
                 }
-                _mainInfo.SubInfos = subList;
+                _businessService.DoAdd(_mainInfo);
             }
-            _businessService.DoModify(_mainInfo);
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         public void Modify()
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (_subGrid != null)
+                {
+                    ArrayList subList = new ArrayList();
+                    foreach (DataGridViewRow r in _subGrid.Rows)
+                    {
+
+                        if (r.Cells[0].Value != null)
+                        {
+                            BusinessControl.SetSubInfoProperties(_subInfo, r);
+                            subList.Add(_subInfo);
+                        }
+
+                    }
+                    _mainInfo.SubInfos = subList;
+                }
+                _businessService.DoModify(_mainInfo);
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         public void Delete()
         {
-            _businessService.DoDel(_mainInfo);
+            try
+            {
+                _businessService.DoDel(_mainInfo);
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         private void btnAudit_Click(object sender, EventArgs e)
         {
-            _businessService.DoAudit(_mainInfo);
+            try
+            {
+                _businessService.DoAudit(_mainInfo);
 
-            BusinessControl.SetControlValue(_mainInfo, tpControl);
-            MessageBox.Show("单据[" + _mainInfo.cCode + "]" + SysConst.msgAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
-            tpControl.Enabled = false; 
+                BusinessControl.SetControlValue(_mainInfo, tpControl);
+                Msg.Show("单据[" + _mainInfo.cCode + "]" + SysConst.msgAuditSuccess);
+                tpControl.Enabled = false;
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         private void btnUnAudit_Click(object sender, EventArgs e)
         {
-            Result result = new Result();
-            _businessService.DoUnAudit(_mainInfo);
-            BusinessControl.SetControlValue(_mainInfo, tpControl);
+            try
+            {
+                _businessService.DoUnAudit(_mainInfo);
+                BusinessControl.SetControlValue(_mainInfo, tpControl);
 
-            MessageBox.Show("单据[" + _mainInfo.cCode + "]" + SysConst.msgUnAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
-            tpControl.Enabled = true;
+                Msg.Show("单据[" + _mainInfo.cCode + "]" + SysConst.msgUnAuditSuccess);
+                tpControl.Enabled = true;
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
 
         }
     }

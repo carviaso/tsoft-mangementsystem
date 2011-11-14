@@ -5,8 +5,7 @@ namespace TS.Sys.Platform.BaseData.Info
 {
     public class EmployeeInfo : BaseInfo
     {
-        private object _cParent;
-        private object _iForbidden = 0;
+        private object _cParent; 
         private object _cDepartment;
         private object _iSex;
         private object _dBirthDate;
@@ -19,12 +18,7 @@ namespace TS.Sys.Platform.BaseData.Info
         private object _cBankAccount;
         private object _cEmail;
         private object _cRemark;
-
-        public Object iForbidden
-        {
-            get { return this._iForbidden; }
-            set { this._iForbidden = value; }
-        }
+ 
 
         public Object cParent
         {

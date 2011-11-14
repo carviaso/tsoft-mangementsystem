@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 using TS.Sys.Widgets.Refer.Control;
+using System.Collections;
 
 namespace TS.Sys.Widgets.Refer.WidgetRefer
 {
@@ -14,6 +15,16 @@ namespace TS.Sys.Widgets.Refer.WidgetRefer
         private ToolStripButton _btn;
         private String _url;
         private Object _tableName;
+        private ReferType _referType;
+        public bool require;
+        private RequireSelect _require;
+        private TableLayoutPanel _tpControl;
+        private String _referStr;
+        public enum RequireSelect
+        {
+            True,
+            False,
+        }
 
         public LabelRefer()
         {
@@ -46,13 +57,7 @@ namespace TS.Sys.Widgets.Refer.WidgetRefer
 
         }
 
-        public bool require;
-        private RequireSelect _require;
-        public enum RequireSelect
-        {
-            True,
-            False,
-        }
+        
         [Browsable(true)]
         public String DataTableName
         {
@@ -65,7 +70,9 @@ namespace TS.Sys.Widgets.Refer.WidgetRefer
                 }
         }
 
-
+        /// <summary>
+        /// 是否未必输项
+        /// </summary>
         public RequireSelect Require
         {
             set
@@ -91,7 +98,37 @@ namespace TS.Sys.Widgets.Refer.WidgetRefer
 
         }
 
-        private ReferType _referType;
+        /// <summary>
+        /// 设置参照值所映射的控件
+        /// 【格式】控件名1:列名1;控件名2:列名2;
+        /// </summary>
+        public String ReferMapping
+        {
+            set {
+                _referStr = value; 
+                Hashtable referMapping = new Hashtable();
+                String[] values = value.Split(';');
+                foreach (String v in values)
+                {
+                    if (String.IsNullOrEmpty(v))
+                        continue;
+                    String[] vDetail = v.Split(':');
+                    referMapping.Add(vDetail[0], vDetail[1]);
+                }
+                dataControl.ReferMapping = referMapping;
+
+            }
+            get
+            {
+                if (String.IsNullOrEmpty(_referStr))
+                    return "";
+                return _referStr;
+            }
+        }
+
+        /// <summary>
+        /// 参照类型
+        /// </summary>
         public ReferType DataType
         {
             set
@@ -108,7 +145,9 @@ namespace TS.Sys.Widgets.Refer.WidgetRefer
                 return this._referType;
             }
         }
-         
+
+
+
         /// <summary>
         /// 是否可用
         /// </summary>
@@ -167,11 +206,12 @@ namespace TS.Sys.Widgets.Refer.WidgetRefer
             _btn = btn;
         }
 
-        public void SetInfoStatus(Form form,Form superForm,ToolStripButton btn)
+        public void SetInfoStatus(Form form,Form superForm,ToolStripButton btn,TableLayoutPanel tpControl)
         {
             _form = form;
             _superForm = superForm;
             _btn = btn;
+            dataControl.TpControl = tpControl;
         }
 
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TS.Sys.Platform.Exceptions;
+using TS.Sys.Domain;
 
 namespace TS.Sys.Util
 {
@@ -8,26 +10,31 @@ namespace TS.Sys.Util
     {
         public static Decimal GetAmt(String o)
         {
-            o = o.Substring(1);
+            char c = o[0];
+            if (c.Equals('-'))
+            {
+                o = o.Substring(2);
+                o = "-" + o;
+            }
+            else
+                o = o.Substring(1);
+            
             Decimal amt = Decimal.Parse(o);
             return amt;
         }
 
         public static String FormatAMT(Object amtIn)
         {
-            Decimal amt = Decimal.Parse(amtIn.ToString().Trim());
-            amt = Math.Round(amt, 2);
-            String pre1 = "";
-            String pre2 = "";
-            String precision = "￥";
-            for (int i = 0; i < 2; i++)
+            try
             {
-                pre1 += "#";
-                pre2 += "0";
+                //Decimal amt = Decimal.Parse(amtIn.ToString().Trim());
+                return string.Format("{0:N}",amtIn);
+                
             }
-            String _amtFormatter = "0." + pre2 + ";";
-            precision += "#," + pre1 + _amtFormatter;
-            return amt.ToString(precision + "-" + precision + "");
+            catch (Exception ex)
+            {
+                throw new BusinessException(ExceptionConst.Error_Number);
+            }
 
         }
 

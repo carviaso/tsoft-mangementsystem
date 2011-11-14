@@ -48,11 +48,7 @@ namespace TS.Sys.Widgets.Refer.Fetcher.Refer
             String sql = getSql(condition);
             DataTable referInfo = new DataTable();
 
-            referInfo = TS.Sys.DBLayer.DbSvr.GetDbService().GetDataTable(sql);
-            //refer.DataControl.PopupGridAutoSize = PopupGridAutoSize;
-            //refer.DataControl.DropDownHeight = DropDownHeight;
-            //refer.DataControl.DropDownWidth = DropDownWidth;
-            //refer.DataControl.DataSource = referInfo; 
+            referInfo = TS.Sys.DBLayer.DbSvr.GetDbService().GetDataTable(sql); 
 
 
         }

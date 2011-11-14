@@ -7,7 +7,8 @@ using TS.Business.FA.Info;
 using TS.Sys.DBLayer;
 using TS.Sys.Domain;
 using TS.Sys.Platform.Business.Info;
-using TS.Sys.Platform.Business.Service; 
+using TS.Sys.Platform.Business.Service;
+using TS.Sys.Platform.Business.Util; 
 
 
 namespace TS.Business.FA.Service
@@ -33,9 +34,11 @@ namespace TS.Business.FA.Service
             List<SqlCommand> commands = new List<SqlCommand>();
             SqlCommand command = faCostDao.GetAddMainCommandFaCost(fcInfo);
             commands.Add(command);
-            foreach (object o in (ArrayList)fcInfo.SubInfos)
+            foreach (object o in fcInfo.SubInfos)
             {
-                FaCostSubInfo fdi = (FaCostSubInfo)o;
+                Hashtable fdHash = (Hashtable)o;
+                FaCostSubInfo fdi = new FaCostSubInfo();
+                BusinessControl.SetInfoByResult(fdi, fdHash);
                 command = faCostDao.GetAddSubCommandFaCost(fcInfo, fdi);
                 commands.Add(command);
             }

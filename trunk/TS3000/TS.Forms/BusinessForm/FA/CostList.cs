@@ -5,7 +5,8 @@ using TS.Business.FA.Info;
 using TS.Business.FA.Service;
 using TS.Sys.Domain;
 using TS.Sys.Util;
-using TS.Sys.Platform.Business.Util; 
+using TS.Sys.Platform.Business.Util;
+using TS.Sys.Platform.Exceptions; 
 
 namespace TS.Forms.BusinessForm.FA
 {
@@ -86,19 +87,20 @@ namespace TS.Forms.BusinessForm.FA
         private void btnDelete_Click(object sender, EventArgs e)
         {
             BusinessControl.SetInfoByGrid(fcInfo, this.gridFaCost);
-            DialogResult diaResult = MessageBox.Show("是否删除单据[" + fcInfo.cCode + "]？", SysConst.msgDeleteConfirm, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult diaResult = Msg.Show("是否删除单据[" + fcInfo.cCode + "]？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (diaResult == DialogResult.OK)
-            {                
-                Result operResult = fcService.DoDel(fcInfo);
-                if (operResult.Code == SysConst.exeSucess)
+            {
+                try
                 {
-                    MessageBox.Show(SysConst.msgDeleteSuccess);
+                    fcService.DoDel(fcInfo);
+                    Msg.Show(SysConst.msgDeleteSuccess);
                     btnRefresh_Click(sender, e);
                 }
-                else
+                catch (BusinessException ex)
                 {
-                    MessageBox.Show(SysConst.msgDeleteFaild);
-                } 
+                    Msg.Show(ex.Message);
+                }
+                 
             }
 
         }
@@ -116,15 +118,29 @@ namespace TS.Forms.BusinessForm.FA
         private void btnAudit_Click(object sender, EventArgs e)
         {
             BusinessControl.SetInfoByGrid(fcInfo, this.gridFaCost);
-            fcService.DoAudit(fcInfo);
-            MessageBox.Show("单据[" + fcInfo.cCode + "]" + SysConst.msgAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
+            try
+            {
+                fcService.DoAudit(fcInfo);
+                Msg.Show("单据[" + fcInfo.cCode + "]" + SysConst.msgAuditSuccess);
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         private void btnUnAudit_Click(object sender, EventArgs e)
         {
             BusinessControl.SetInfoByGrid(fcInfo, this.gridFaCost);
-            fcService.DoUnAudit(fcInfo);
-            MessageBox.Show("单据[" + fcInfo.cCode + "]" + SysConst.msgUnAuditSuccess, SysConst.msgBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.None);
+            try
+            {
+                fcService.DoUnAudit(fcInfo);
+                Msg.Show("单据[" + fcInfo.cCode + "]" + SysConst.msgUnAuditSuccess);
+            }
+            catch (BusinessException ex)
+            {
+                Msg.Show(ex.Message);
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)

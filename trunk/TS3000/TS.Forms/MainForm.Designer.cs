@@ -42,6 +42,7 @@
             this.btnMax = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMin = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,35 +116,35 @@
             // btnCascade
             // 
             this.btnCascade.Name = "btnCascade";
-            this.btnCascade.Size = new System.Drawing.Size(124, 22);
+            this.btnCascade.Size = new System.Drawing.Size(152, 22);
             this.btnCascade.Text = "层叠";
             this.btnCascade.Click += new System.EventHandler(this.btnCascade_Click);
             // 
             // btnArrHoriz
             // 
             this.btnArrHoriz.Name = "btnArrHoriz";
-            this.btnArrHoriz.Size = new System.Drawing.Size(124, 22);
+            this.btnArrHoriz.Size = new System.Drawing.Size(152, 22);
             this.btnArrHoriz.Text = "水平平铺";
             this.btnArrHoriz.Click += new System.EventHandler(this.btnArrHoriz_Click);
             // 
             // btnArrVert
             // 
             this.btnArrVert.Name = "btnArrVert";
-            this.btnArrVert.Size = new System.Drawing.Size(124, 22);
+            this.btnArrVert.Size = new System.Drawing.Size(152, 22);
             this.btnArrVert.Text = "垂直平铺";
             this.btnArrVert.Click += new System.EventHandler(this.btnArrVert_Click);
             // 
             // btnMax
             // 
             this.btnMax.Name = "btnMax";
-            this.btnMax.Size = new System.Drawing.Size(124, 22);
+            this.btnMax.Size = new System.Drawing.Size(152, 22);
             this.btnMax.Text = "最大化";
             this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
             // 
             // btnMin
             // 
             this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(124, 22);
+            this.btnMin.Size = new System.Drawing.Size(152, 22);
             this.btnMin.Text = "最小化";
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
@@ -153,17 +154,28 @@
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 695);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 742);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusBottom);
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "天时系统3000";
+            this.MdiChildActivate += new System.EventHandler(this.MainForm_MdiChildActivate);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnArrVert;
         private System.Windows.Forms.ToolStripMenuItem btnMax;
         private System.Windows.Forms.ToolStripMenuItem btnMin;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

@@ -4,9 +4,9 @@ using System.Reflection;
 using System.Windows.Forms;
 using TS.Sys.Widgets;
 using TS.Sys.Widgets.Refer.WidgetRefer;
-using System.Collections;
-using TS.Sys.Widgets.Amt.GridAmt;
+using System.Collections; 
 using TS.Sys.Util;
+using TS.Sys.Widgets.Money.GridMoney;
 
 namespace TS.Sys.Platform.Business.Util
 {
@@ -28,6 +28,16 @@ namespace TS.Sys.Platform.Business.Util
                     pi.SetValue(info, item.Value.ToString(), null);
                     
                 }
+            }
+        }
+
+        public static void SetInfoNull(Object info)
+        {
+            Type t = info.GetType();
+            PropertyInfo[] pis = t.GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                pi.SetValue(info,null,null);
             }
         }
 
@@ -81,13 +91,14 @@ namespace TS.Sys.Platform.Business.Util
         /// </summary>
         /// <param name="info"></param>
         /// <param name="tpControl"></param>
-        public static void SetSubInfoProperties(object info, DataGridViewRow row)
+        public static Hashtable SetSubInfoProperties(object info, DataGridViewRow row)
         {
             Type t = info.GetType();
+            Hashtable con = new Hashtable();
             foreach (DataGridViewCell cell in row.Cells)
             {
                 Object value = new Object();
-                if (cell.OwningColumn is DataGridViewAmtColumn)
+                if (cell.OwningColumn is DataGridViewMoneyColumn)
                 {
                     value = NumberUtil.GetAmt(cell.FormattedValue.ToString());
                 }
@@ -100,8 +111,9 @@ namespace TS.Sys.Platform.Business.Util
                 {
                     continue;
                 }
-                pi.SetValue(info, value, null);
+                con.Add(cell.OwningColumn.Name,value);
             }
+            return con;
         }
 
         public static void SetEditInfoProperties(object info, TableLayoutPanel tpControl)
@@ -220,7 +232,7 @@ namespace TS.Sys.Platform.Business.Util
                 {
                     SetComValue(c, value);
                     break;
-                }
+                } 
             }
         }
 

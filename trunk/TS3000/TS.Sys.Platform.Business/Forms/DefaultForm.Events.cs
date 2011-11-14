@@ -17,6 +17,7 @@ namespace TS.Sys.Platform.Business.Forms
         {
             BusinessControl.SetNewEditStatus(toolBtn);
             BusinessControl.ClearControlValue(tpControl);
+            tpControl.Enabled = true;
             if (formEvents != null)
             {
                 //执行自定义新增事件
@@ -62,7 +63,7 @@ namespace TS.Sys.Platform.Business.Forms
             BusinessControl.SetSaveCancelInitStatus(toolBtn);
             //fcForm.listRefresh();
             Type t = this.GetType();
-            MethodInfo m = t.GetMethod("listRefersh");
+            MethodInfo m = t.GetMethod("ListRefresh",BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.ExactBinding);
             if (m != null)
             {
                 m.Invoke(this, null);
@@ -72,7 +73,7 @@ namespace TS.Sys.Platform.Business.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult diaResult = MessageBox.Show("删除" + this.Text, SysConst.msgDeleteConfirm, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult diaResult = Msg.Show("删除" + this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (diaResult.Equals(DialogResult.Cancel))
             {
                 return;

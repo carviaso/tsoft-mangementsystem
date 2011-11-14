@@ -61,6 +61,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\IFormEvents.cs" />
+    <Compile Include="Forms\IFormPointCut.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -37,7 +37,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Deag555\</OutputPath>
+    <OutputPath>bin\Deag552222222322322235522222222222421\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -62,11 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Amt\GridAmt\DataGridViewAmtCell.cs" />
-    <Compile Include="Amt\GridAmt\DataGridViewAmtColumn.cs" />
-    <Compile Include="Amt\GridAmt\DataGridViewAmtEditingControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ButtonCurrencyEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +99,11 @@
     <Compile Include="Refer\Fetcher\Refer\Impl\SupplyReferImpl.cs" />
     <Compile Include="Refer\Fetcher\Refer\Impl\UserReferImpl.cs" />
     <Compile Include="Refer\Fetcher\Refer\IRefer.cs" />
+    <Compile Include="Refer\GridFaCostTypeRefer\GridFaCostTypeReferCell.cs" />
+    <Compile Include="Refer\GridFaCostTypeRefer\GridFaCostTypeReferColumn.cs" />
+    <Compile Include="Refer\GridFaCostTypeRefer\GridFaCostTypeReferEditingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Refer\GridRefer\DataGridViewDataControlColumn.cs" />
     <Compile Include="Refer\GridRefer\DataGridViewDataControlCell.cs" />
     <Compile Include="Refer\GridRefer\DataGridViewDataControlEditingControl.cs">

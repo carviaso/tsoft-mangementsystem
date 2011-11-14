@@ -7,8 +7,7 @@ namespace TS.Sys.Platform.BaseData.Info
     {
         private object _cFullName;
         private object _cAcctCode;
-        private object _iType;
-        private object _iForbidden = 0;
+        private object _iType; 
 
         public Object iType
         {
@@ -20,13 +19,7 @@ namespace TS.Sys.Platform.BaseData.Info
         {
             set { this._cAcctCode = value; }
             get { return this._cAcctCode; }
-        }
-
-        public Object iForbidden
-        {
-            set { this._iForbidden = value; }
-            get { return this._iForbidden; }
-        }
+        } 
 
         public Object cFullName
         {
