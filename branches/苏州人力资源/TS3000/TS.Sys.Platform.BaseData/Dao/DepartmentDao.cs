@@ -46,8 +46,11 @@ namespace TS.Sys.Platform.BaseData.Dao
 
         public DataTable QueryTreeResult(Object cCode)
         {
+            if (cCode == null)
+            {
+                return QueryForAll();
+            }
             Hashtable con = new Hashtable();
-
             con.Add("cCode1", cCode);
             con.Add("cCode", cCode);
             String sql = SQL_TREE_SELECT;

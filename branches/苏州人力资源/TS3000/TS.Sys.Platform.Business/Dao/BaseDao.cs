@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections;
 using TS.Sys.DBLayer;
-using TS.Sys.Domain; 
-using TS.Sys.Util;
+using TS.Sys.Domain;
 using TS.Sys.Platform.Business.Info;
 
 namespace TS.Sys.Platform.Business.Dao
@@ -10,104 +9,53 @@ namespace TS.Sys.Platform.Business.Dao
     public class BaseDao : Daos
     {
 
-
-        protected Result Add(Infos info)
+        protected void Add(Infos info)
         {
             Hashtable field = new Hashtable();
             String cGUID = TS.Sys.Util.KeyUtil.genSimpleKey();
             String cTimeStamp = TS.Sys.Util.KeyUtil.genSimpleKey();
             info.cGUID = cGUID;
             info.cTimeStamp = cTimeStamp;
-            Result result = new Result();
-            if (DbSvr.GetDbService().Insert(TableName, info) > 0)
-            {
-                result.Code = SysConst.exeSucess;
-                result.Message = SysConst.insertSucess;
-            }
-            else
-            {
-                result.Code = SysConst.exeFaild;
-                result.Message = SysConst.insertFaild;
-            }
-            return result;
+            DbSvr.GetDbService().Insert(TableName, info);
+            
         }
 
-        protected Result Modify(Infos info)
+        protected void Modify(Infos info)
         {
             Hashtable con = new Hashtable();
             con.Add("cGUID", info.cGUID);
             String cTimeStamp = TS.Sys.Util.KeyUtil.genSimpleKey();
             info.cTimeStamp = cTimeStamp;
-            Result result = new Result();
-            if (DbSvr.GetDbService().Update(TableName, info, con) > 0)
-            {
-                result.Code = SysConst.exeSucess;
-                result.Message = SysConst.modifySucess;
-            }
-            else
-            {
-                result.Code = SysConst.exeFaild;
-                result.Message = SysConst.modifyFaild;
-            }
-            return result;
+            DbSvr.GetDbService().Update(TableName, info, con);
+            
         }
 
-        protected Result Delete(Infos info)
+        protected void Delete(Infos info)
         {
             Hashtable con = new Hashtable();
             con.Add("cGUID", info.cGUID);
             Result result = new Result();
-            if (DbSvr.GetDbService().Delete(TableName, con) > 0)
-            {
-                result.Code = SysConst.exeSucess;
-                result.Message = SysConst.deleteSucess;
-            }
-            else
-            {
-                result.Code = SysConst.exeFaild;
-                result.Message = SysConst.deleteFaild;
-            }
-            return result;
+            DbSvr.GetDbService().Delete(TableName, con);
         }
 
-        protected Result Forbidden(Infos info)
+        protected void Forbidden(Infos info)
         {
             Hashtable con = new Hashtable();
             con.Add("cGUID", info.cGUID);
             Hashtable values = new Hashtable();
             values.Add("iForbidden", 1);
             Result result = new Result();
-            if (DbSvr.GetDbService().Update(TableName, values, con) > 0)
-            {
-                result.Code = SysConst.exeSucess;
-                result.Message = SysConst.forbidSuccess;
-            }
-            else
-            {
-                result.Code = SysConst.exeFaild;
-                result.Message = SysConst.forbidFaild;
-            }
-            return result;
+            DbSvr.GetDbService().Update(TableName, values, con);
         }
 
-        protected Result Valueable(Infos info)
+        protected void Valueable(Infos info)
         {
             Hashtable con = new Hashtable();
             con.Add("cGUID", info.cGUID);
             Hashtable values = new Hashtable();
             values.Add("iForbidden", 0);
             Result result = new Result();
-            if (DbSvr.GetDbService().Update(TableName, values, con) > 0)
-            {
-                result.Code = SysConst.exeSucess;
-                result.Message = SysConst.valueSucess;
-            }
-            else
-            {
-                result.Code = SysConst.exeFaild;
-                result.Message = SysConst.valueFaild;
-            }
-            return result;
+            DbSvr.GetDbService().Update(TableName, values, con);
         }
 
         

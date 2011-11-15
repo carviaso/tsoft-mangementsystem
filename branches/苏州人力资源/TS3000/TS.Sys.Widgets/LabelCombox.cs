@@ -11,6 +11,7 @@ namespace TS.Sys.Widgets
 {
     public partial class LabelCombox : UserControl
     {
+        
         public LabelCombox()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace TS.Sys.Widgets
             True,
             False,
         }
-
+         
 
         public RequireSelect Require
         {
@@ -33,10 +34,17 @@ namespace TS.Sys.Widgets
                 if (value == RequireSelect.True)
                 {
                     require = true;
+                    //如果控件可用则用必填项的颜色，否则用不可用的颜色
+                    if (this.comboBox.Enabled == true)
+                    {
+                        this.comboBox.BackColor = SystemColors.Info;
+                    }
                 }
                 else
                 {
                     require = false;
+                    if (!require && !Enabled)
+                        this.comboBox.BackColor = SystemColors.HighlightText;
                 }
 
             }
@@ -52,6 +60,14 @@ namespace TS.Sys.Widgets
             set
             {
                 this.comboBox.Enabled = value;
+                if (!value)
+                {
+                    this.comboBox.BackColor = Color.MistyRose;
+                }
+                else
+                {
+                    this.comboBox.BackColor = SystemColors.HighlightText;
+                }
             }
             get
             {
@@ -83,7 +99,17 @@ namespace TS.Sys.Widgets
 
         public Object Value
         {
-            set { this.comboBox.SelectedValue = value; }
+            set
+            {
+                if (value == null)
+                {
+                    this.comboBox.SelectedValue = "";
+                }
+                else
+                {
+                    this.comboBox.SelectedValue = value;
+                }
+            }
             get { return this.comboBox.SelectedValue; }
         }
 

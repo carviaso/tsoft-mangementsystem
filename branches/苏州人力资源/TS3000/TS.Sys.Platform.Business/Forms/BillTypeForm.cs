@@ -257,70 +257,55 @@ namespace TS.Sys.Platform.Business.Forms
 
         public void Add()
         {
-            try
-            {
-                //添加明细信息
-                if (_subGrid != null)
-                {
-                    ArrayList subList = new ArrayList();
-                    foreach (DataGridViewRow r in _subGrid.Rows)
-                    {
-                        // _subInfo = new BusinessSubInfo();
-                        //BusinessControl.SetInfoNull(_subInfo);
-                        if (r.Cells[0].Value != null)
-                        {
-                            Hashtable subHash = BusinessControl.SetSubInfoProperties(_subInfo, r);
-                            subList.Add(subHash);
-                        }
 
-                    }
-                    _mainInfo.SubInfos = subList;
-                }
-                _businessService.DoAdd(_mainInfo);
-            }
-            catch (BusinessException ex)
+            //添加明细信息
+            if (_subGrid != null)
             {
-                Msg.Show(ex.Message);
+                ArrayList subList = new ArrayList();
+                foreach (DataGridViewRow r in _subGrid.Rows)
+                {
+                    // _subInfo = new BusinessSubInfo();
+                    //BusinessControl.SetInfoNull(_subInfo);
+                    if (r.Cells[0].Value != null)
+                    {
+                        Hashtable subHash = BusinessControl.SetSubInfoProperties(_subInfo, r);
+                        subList.Add(subHash);
+                    }
+
+                }
+                _mainInfo.SubInfos = subList;
             }
+            _businessService.DoAdd(_mainInfo);
+
         }
 
         public void Modify()
         {
-            try
+
+            if (_subGrid != null)
             {
-                if (_subGrid != null)
+                ArrayList subList = new ArrayList();
+                foreach (DataGridViewRow r in _subGrid.Rows)
                 {
-                    ArrayList subList = new ArrayList();
-                    foreach (DataGridViewRow r in _subGrid.Rows)
+
+                    if (r.Cells[0].Value != null)
                     {
-
-                        if (r.Cells[0].Value != null)
-                        {
-                            BusinessControl.SetSubInfoProperties(_subInfo, r);
-                            subList.Add(_subInfo);
-                        }
-
+                        BusinessControl.SetSubInfoProperties(_subInfo, r);
+                        subList.Add(_subInfo);
                     }
-                    _mainInfo.SubInfos = subList;
+
                 }
-                _businessService.DoModify(_mainInfo);
+                _mainInfo.SubInfos = subList;
             }
-            catch (BusinessException ex)
-            {
-                Msg.Show(ex.Message);
-            }
+            _businessService.DoModify(_mainInfo);
+
         }
 
         public void Delete()
         {
-            try
-            {
-                _businessService.DoDel(_mainInfo);
-            }
-            catch (BusinessException ex)
-            {
-                Msg.Show(ex.Message);
-            }
+
+            _businessService.DoDel(_mainInfo);
+
         }
 
         private void btnAudit_Click(object sender, EventArgs e)

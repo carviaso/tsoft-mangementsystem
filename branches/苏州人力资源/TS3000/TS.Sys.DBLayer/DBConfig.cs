@@ -31,7 +31,7 @@ namespace TS.Sys.DBLayer
            // doc.Load("db.xml");
 
             ht.Add("dataSource","ICE-PC");// doc.SelectNodes("//db/DataSource").Item(0).InnerText);
-            ht.Add("initCataLog", "TS3000");// doc.SelectNodes("//db/InitCatalog").Item(0).InnerText);
+            ht.Add("initCataLog", "TS3000SZ");// doc.SelectNodes("//db/InitCatalog").Item(0).InnerText);
             ht.Add("username", "sa");//doc.SelectNodes("//db/Username").Item(0).InnerText);
             ht.Add("password","sa123456"); //doc.SelectNodes("//db/Password").Item(0).InnerText);
         }

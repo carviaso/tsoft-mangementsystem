@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using TS.Sys.Domain;
 using TS.Sys.Platform.Business.Util;
+using TS.Sys.Platform.Exceptions;
 
 namespace TS.Sys.Platform.Business.Forms
 {
@@ -34,56 +35,68 @@ namespace TS.Sys.Platform.Business.Forms
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Result result = new Result();
-            //构造fi
-            BusinessControl.SetInfoProperties(info, tpControl);
-            //保存时新增还是修改
-            if (info.cGUID != null && !String.IsNullOrEmpty(info.cGUID.ToString()))
+            try
             {
-                if (formEvents != null)
+                //构造fi
+                BusinessControl.SetInfoProperties(info, tpControl);
+                //保存时新增还是修改
+                if (info.cGUID != null && !String.IsNullOrEmpty(info.cGUID.ToString()))
                 {
-                    //执行自定义修改事件
-                    //考虑加入doBefore()
-                    formEvents.Modify();
-                    //考虑加入doAfter();
-                } 
-            }
-            else
-            {
-                if (formEvents != null)
+                    if (formEvents != null)
+                    {
+                        //执行自定义修改事件
+                        //考虑加入doBefore()
+                        formEvents.Modify();
+                        //考虑加入doAfter();
+                    }
+                }
+                else
                 {
-                    //执行自定义修改事件
-                    //考虑加入doBefore()
-                    formEvents.Add();
-                    //考虑加入doAfter();
-                } 
+                    if (formEvents != null)
+                    {
+                        //执行自定义修改事件
+                        //考虑加入doBefore()
+                        formEvents.Add();
+                        //考虑加入doAfter();
+                    }
+                }
+                //根据保存结果处理 
+                Msg.Show(SysConst.msgSaveSuccess);
+                BusinessControl.SetSaveCancelInitStatus(toolBtn);
+                Type t = this.GetType();
+                MethodInfo m = t.GetMethod("ListRefresh", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.ExactBinding);
+                if (m != null)
+                {
+                    m.Invoke(this, null);
+                }
             }
-            //根据保存结果处理 
-            MessageBox.Show(SysConst.msgSaveSuccess);
-            BusinessControl.SetSaveCancelInitStatus(toolBtn);
-            //fcForm.listRefresh();
-            Type t = this.GetType();
-            MethodInfo m = t.GetMethod("ListRefresh",BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.ExactBinding);
-            if (m != null)
+            catch (BusinessException ex)
             {
-                m.Invoke(this, null);
+                Msg.Show(ex.Message);
             }
             
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult diaResult = Msg.Show("删除" + this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (diaResult.Equals(DialogResult.Cancel))
+            try
             {
-                return;
+                DialogResult diaResult = Msg.Show("删除" + this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (diaResult.Equals(DialogResult.Cancel))
+                {
+                    return;
+                }
+                if (formEvents != null)
+                {
+                    //执行自定义修改事件
+                    //考虑加入doBefore()
+                    formEvents.Delete();
+                    //考虑加入doAfter();
+                }
             }
-            if (formEvents != null)
+            catch (BusinessException ex)
             {
-                //执行自定义修改事件
-                //考虑加入doBefore()
-                formEvents.Delete();
-                //考虑加入doAfter();
+                Msg.Show(ex.Message);
             }
         }
 

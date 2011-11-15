@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TS.Sys.Domain
 {
-    public class ExceptionConst
+    public partial class ExceptionConst
     {
 
         #region 系统错误
@@ -13,6 +13,10 @@ namespace TS.Sys.Domain
         /// 您输入了无效的数字，请重新输入！
         /// </summary>
         public static string Error_Number = "您输入了无效的数字，请重新输入！";
+        /// <summary>
+        /// 没有找到注册模块,请检查菜单配置！
+        /// </summary>
+        public static string Error_Form = "没有找到注册模块,请检查菜单配置！";
         #endregion
         /// <summary>
         /// 该单据已经被并发修改，请刷新！
@@ -34,5 +38,13 @@ namespace TS.Sys.Domain
         /// 操作失败，该记录已启用！
         /// </summary>
         public static string Error_Valueable = "操作失败，该记录已启用！";
+        /// <summary>
+        /// 没有记录可以删除！
+        /// </summary>
+        public static string Error_Del = "没有记录可以删除！";
+        /// <summary>
+        /// 没有记录可以查看！
+        /// </summary>
+        public static string Error_View = "没有记录可以查看！";
     }
 }

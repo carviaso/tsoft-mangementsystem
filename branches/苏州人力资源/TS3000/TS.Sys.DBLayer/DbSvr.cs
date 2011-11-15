@@ -158,11 +158,11 @@ namespace TS.Sys.DBLayer
             {
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = sql;
-                foreach (DictionaryEntry item in paras)
+                foreach (String key in paras.Keys)
                 {
-                    String paramName = "@"+item.Key.ToString();
-                    Object value = item.Value;
-                    command.Parameters.Add(new SqlParameter(paramName,item.Value));
+                    String paramName = "@" + key;
+                    Object value = paras[key];
+                    command.Parameters.Add(new SqlParameter(paramName, value));
                 }
                 Console.WriteLine("[SQL]" + command.CommandText);
                 return SqlUtil.GetDataTable(command);
