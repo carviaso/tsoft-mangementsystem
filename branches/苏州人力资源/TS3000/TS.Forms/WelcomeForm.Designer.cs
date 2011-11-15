@@ -30,12 +30,9 @@
         {
             this.tpControl = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-             this.btnPu = new System.Windows.Forms.ToolStripButton();
-            this.btnSa = new System.Windows.Forms.ToolStripButton();
-            this.btnSt = new System.Windows.Forms.ToolStripButton();
-            this.btnArAp = new System.Windows.Forms.ToolStripButton();
+            this.btnMember = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnBase = new System.Windows.Forms.ToolStripButton(); 
+            this.btnBase = new System.Windows.Forms.ToolStripButton();
             this.tpControl.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,71 +58,35 @@
             // 
             // toolStrip1
             // 
-             this.toolStrip1.AutoSize = false;
-             this.toolStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-             this.toolStrip1.BackgroundImage = global::TS.Forms.Properties.Resources.MenuBG;
-             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
-             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-             this.btnPu,
-             this.btnSa,
-             this.btnSt,
-             this.btnArAp,
-             this.toolStripSeparator1,
-             this.btnBase});
-             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-             this.toolStrip1.Location = new System.Drawing.Point(0, 110);
-             this.toolStrip1.Name = "toolStrip1";
-             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-             this.toolStrip1.Size = new System.Drawing.Size(180, 602);
-             this.toolStrip1.TabIndex = 0;
-             this.toolStrip1.Text = "toolStrip1"; 
-             // 
-            // btnPu
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStrip1.BackgroundImage = global::TS.Forms.Properties.Resources.MenuBG;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnMember,
+            this.toolStripSeparator1,
+            this.btnBase});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 110);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(180, 602);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            this.btnPu.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.btnPu.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPu.Image = global::TS.Forms.Properties.Resources.Buyer;
-            this.btnPu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPu.Name = "btnPu";
-            this.btnPu.Size = new System.Drawing.Size(178, 50);
-            this.btnPu.Text = "    采购管理";
-            this.btnPu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPu.Click += new System.EventHandler(this.btnPu_Click);
+            // btnMember
             // 
-            // btnSa
-            // 
-            this.btnSa.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.btnSa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSa.Image = global::TS.Forms.Properties.Resources.Sale;
-            this.btnSa.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSa.Name = "btnSa";
-            this.btnSa.Size = new System.Drawing.Size(178, 50);
-            this.btnSa.Text = "    销售管理";
-            this.btnSa.Click += new System.EventHandler(this.btnSa_Click);
-            // 
-            // btnSt
-            // 
-            this.btnSt.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.btnSt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSt.Image = global::TS.Forms.Properties.Resources.Stock;
-            this.btnSt.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSt.Name = "btnSt";
-            this.btnSt.Size = new System.Drawing.Size(178, 50);
-            this.btnSt.Text = "    库存管理";
-            // 
-            // btnArAp
-            // 
-            this.btnArAp.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
-            this.btnArAp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnArAp.Image = global::TS.Forms.Properties.Resources.ArAp;
-            this.btnArAp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnArAp.Name = "btnArAp";
-            this.btnArAp.Size = new System.Drawing.Size(178, 50);
-            this.btnArAp.Text = "    应收应付";
-            this.btnArAp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArAp.Click += new System.EventHandler(this.btnArAp_Click);
+            this.btnMember.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMember.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnMember.Image = global::TS.Forms.Properties.Resources.Employee;
+            this.btnMember.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMember.Name = "btnMember";
+            this.btnMember.Size = new System.Drawing.Size(178, 50);
+            this.btnMember.Text = "    会员管理";
+            this.btnMember.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
             // 
             // toolStripSeparator1
             // 
@@ -142,7 +103,7 @@
             this.btnBase.Size = new System.Drawing.Size(178, 50);
             this.btnBase.Text = "    基础数据";
             this.btnBase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBase.Click += new System.EventHandler(this.btnBase_Click); 
+            this.btnBase.Click += new System.EventHandler(this.btnBase_Click);
             // 
             // WelcomeForm
             // 
@@ -166,11 +127,8 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         
         private System.Windows.Forms.ToolStripButton btnBase;
-        private System.Windows.Forms.ToolStripButton btnArAp;
-        private System.Windows.Forms.ToolStripButton btnPu;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnSt;
-        private System.Windows.Forms.ToolStripButton btnSa; 
+        private System.Windows.Forms.ToolStripButton btnMember;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1; 
 
     }
 }

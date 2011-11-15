@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.statusBottom = new System.Windows.Forms.StatusStrip();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.收藏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCascade = new System.Windows.Forms.ToolStripMenuItem();
             this.btnArrHoriz = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +41,14 @@
             this.btnMax = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMin = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.cfContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最小化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.最大化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关闭所有ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
+            this.cfContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusBottom
@@ -60,8 +65,6 @@
             this.系统ToolStripMenuItem,
             this.文件ToolStripMenuItem,
             this.操作ToolStripMenuItem,
-            this.查看ToolStripMenuItem,
-            this.收藏ToolStripMenuItem,
             this.窗口ToolStripMenuItem,
             this.帮助ToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
@@ -88,18 +91,6 @@
             this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
             this.操作ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.操作ToolStripMenuItem.Text = "操作";
-            // 
-            // 查看ToolStripMenuItem
-            // 
-            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
-            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.查看ToolStripMenuItem.Text = "查看";
-            // 
-            // 收藏ToolStripMenuItem
-            // 
-            this.收藏ToolStripMenuItem.Name = "收藏ToolStripMenuItem";
-            this.收藏ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.收藏ToolStripMenuItem.Text = "收藏";
             // 
             // 窗口ToolStripMenuItem
             // 
@@ -154,21 +145,54 @@
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
-            // toolStrip1
+            // cfContextMenu
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 695);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
+            this.cfContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeToolStripMenuItem,
+            this.最小化ToolStripMenuItem,
+            this.最大化ToolStripMenuItem,
+            this.关闭ToolStripMenuItem,
+            this.关闭所有ToolStripMenuItem});
+            this.cfContextMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.cfContextMenu.Name = "cfContextMenu";
+            this.cfContextMenu.Size = new System.Drawing.Size(125, 114);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.closeToolStripMenuItem.Text = "层叠";
+            // 
+            // 最小化ToolStripMenuItem
+            // 
+            this.最小化ToolStripMenuItem.Name = "最小化ToolStripMenuItem";
+            this.最小化ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.最小化ToolStripMenuItem.Text = "最小化";
+            // 
+            // 最大化ToolStripMenuItem
+            // 
+            this.最大化ToolStripMenuItem.Name = "最大化ToolStripMenuItem";
+            this.最大化ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.最大化ToolStripMenuItem.Text = "最大化";
+            // 
+            // 关闭ToolStripMenuItem
+            // 
+            this.关闭ToolStripMenuItem.Name = "关闭ToolStripMenuItem";
+            this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.关闭ToolStripMenuItem.Text = "关闭";
+            this.关闭ToolStripMenuItem.Click += new System.EventHandler(this.关闭ToolStripMenuItem_Click);
+            // 
+            // 关闭所有ToolStripMenuItem
+            // 
+            this.关闭所有ToolStripMenuItem.Name = "关闭所有ToolStripMenuItem";
+            this.关闭所有ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.关闭所有ToolStripMenuItem.Text = "关闭所有";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 742);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusBottom);
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
@@ -178,6 +202,7 @@
             this.MdiChildActivate += new System.EventHandler(this.MainForm_MdiChildActivate);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
+            this.cfContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,8 +215,6 @@
         private System.Windows.Forms.ToolStripMenuItem 系统ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 操作ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 收藏ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 窗口ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnCascade;
@@ -199,6 +222,11 @@
         private System.Windows.Forms.ToolStripMenuItem btnArrVert;
         private System.Windows.Forms.ToolStripMenuItem btnMax;
         private System.Windows.Forms.ToolStripMenuItem btnMin;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ContextMenuStrip cfContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 最小化ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 最大化ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关闭ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关闭所有ToolStripMenuItem;
     }
 }

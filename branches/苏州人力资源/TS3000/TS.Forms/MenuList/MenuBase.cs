@@ -192,6 +192,7 @@ namespace TS.Forms.MenuList
             this.btnDepartment.Text = "部门";
             this.btnDepartment.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDepartment.UseCompatibleTextRendering = true;
+            this.btnDepartment.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnDepartment_LinkClicked);
             // 
             // btnEmployee
             // 
@@ -289,6 +290,14 @@ namespace TS.Forms.MenuList
             settle.MdiParent = _mainForm;
             _mainForm.AddForm();
             settle.Show();
+        }
+
+        private void btnDepartment_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DepartmentForm dept = new DepartmentForm();
+            dept.MdiParent = _mainForm;
+            _mainForm.AddForm();
+            dept.Show();
         }
 
         private void btnFaType_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

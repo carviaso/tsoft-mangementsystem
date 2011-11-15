@@ -2,32 +2,56 @@
 using System.Collections;
 using System.Windows.Forms;
 using TS.Sys.Platform.BaseData.Info;
-using TS.Sys.Platform.BaseData.Service; 
-using TS.Sys.Util;
-using TS.Sys.Domain;
-using TS.Sys.Platform.Business.Util; 
+using TS.Sys.Platform.BaseData.Service;
+using System.Reflection;
+using TS.Sys.Platform.Business.Forms; 
 
 namespace TS.Forms.BusinessForm.BS
 {
-    public partial class EmployeeDetailForm : Form
+    public partial class EmployeeDetailForm : BaseTypeForm
     {
         private bool editFlag = false;
         private EmployeeService empService;
         private EmployeeInfo empInfo;
         private EmployeeForm empForm;
-        private int _rowindex;
-        private DataGridViewRowCollection _ds;
+        private string _referType;
+        private Object[] _args; 
 
         public EmployeeDetailForm()
         {
             InitializeComponent();
             empService = new EmployeeService();
+            empInfo = new EmployeeInfo();
+            Hashtable con = new Hashtable();
+            con.Add("ToolBtn", this.toolBtn);
+            con.Add("TpControl", this.tpControl);
+            con.Add("Info", empInfo);
+            con.Add("Service", empService);
+            InitForm(con);
             this.tbControl.TabPages[0].Text = "职员属性";
         }
 
         internal EmployeeForm EmpForm
         {
             set { this.empForm = value; }
+        }
+
+        public Object[] Args
+        {
+            set { this._args = value; }
+        }
+
+        public String ReferType
+        {
+            set { this._referType = value; }
+        }
+
+        public EmployeeDetailForm(String code)
+            :this()
+        {
+            InitForm();
+            this.cDepartment.Value = code;
+
         }
         
         /// <summary>
@@ -39,131 +63,24 @@ namespace TS.Forms.BusinessForm.BS
         public EmployeeDetailForm(int rowIndex, DataGridViewRowCollection ds)
             : this()
         {
-            _rowindex = rowIndex;
-            this._ds = ds;           
-            InitBillFormContent(rowIndex);
-        }
-         
-        private void InitBillFormContent(int rowIndex)
-        {
-             
-            DataGridViewRow r = _ds[rowIndex]; 
-            Object cGUID = r.Cells["cGUID"].Value;
-            this.tbControl.TabPages[0].Text = r.Cells["cName"].Value + "的属性";
-            //ArrayList mainResult = empService.GetResultByGUID(cGUID);
-            //BillForm.SetMainContent(empInfo, mainResult, tpControl);  
+            InitForm(rowIndex, ds);
         }
 
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnInfo_Click()
         {
-            Object a = this.iSex.comboBox.SelectedValue;
-            saveAction();
-            btnSave.Enabled = false;
+            Assembly tempAssembly = Assembly.GetExecutingAssembly();
+
+            Type t = tempAssembly.GetType(_referType);
+            object[] args = _args;
+            object o = System.Activator.CreateInstance(t, args);
+
+            ((Form)o).WindowState = FormWindowState.Normal;
+            ((Form)o).ShowDialog();
         }
 
-        private void saveAction()
+        private void ListRefresh()
         {
-
-            EmployeeInfo emp = new EmployeeInfo();
-            BusinessControl.SetInfoProperties(emp, tpControl);
-            if (cGUID.Value != null && !String.IsNullOrEmpty((string)cGUID.Value))
-            {
-                  
-                empService.Modify(emp);
-            }
-            else
-            {
-                
-                empService.Add(emp);
-            }
-            MessageBox.Show(SysConst.msgSaveSuccess);
             empForm.listRefresh();
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void EmployeeDetailForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (editFlag)
-            {
-                DialogResult result = MessageBox.Show(SysConst.msgDataChange, SysConst.msgBoxTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-                if (result == DialogResult.Yes)
-                {
-                    e.Cancel = false;  //点击OK  
-                }
-                else if (result == DialogResult.No)
-                {
-                    editFlag = false;
-                    btnExit_Click(sender, e);
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            BusinessControl.ClearControlValue(tpControl);
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            if (_rowindex == _ds.Count - 1)
-            {
-                MessageBox.Show(SysConst.msgLastPage);
-            }
-            else
-            {
-                _rowindex++;
-                InitBillFormContent(_rowindex);
-            }
-        }
-
-
-        private void btnPre_Click(object sender, EventArgs e)
-        {
-            if (_rowindex == 0)
-            {
-                MessageBox.Show(SysConst.msgFirstPage);
-            }
-            else
-            {
-                _rowindex--;
-                InitBillFormContent(_rowindex);
-            }
-        }
-
-        private void btnLast_Click(object sender, EventArgs e)
-        {
-            if (_rowindex == _ds.Count - 1)
-            {
-                MessageBox.Show(SysConst.msgLastPage);
-            }
-            else
-            {
-                _rowindex = _ds.Count - 1;
-                InitBillFormContent(_rowindex);
-            }
-        }
-
-        private void btnFirst_Click(object sender, EventArgs e)
-        {
-            if (_rowindex == 0)
-            {
-                MessageBox.Show(SysConst.msgFirstPage);
-            }
-            else
-            {
-                _rowindex = 0;
-                InitBillFormContent(_rowindex);
-            }
         }
     }
 }

@@ -28,6 +28,8 @@ namespace TS.Forms.BusinessForm.BS
             InitGrid();
         } 
 
+
+
         /// <summary>
         /// 由控件弹出
         /// </summary>

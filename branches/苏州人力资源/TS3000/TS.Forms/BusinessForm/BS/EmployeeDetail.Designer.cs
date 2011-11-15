@@ -46,22 +46,12 @@
             this.cAddress = new TS.Sys.Widgets.LabelEdit();
             this.cGUID = new TS.Sys.Widgets.LabelEdit();
             this.cRemark = new TS.Sys.Widgets.LabelEdit();
-            this.btnExit = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.toolFaTypeDetail = new System.Windows.Forms.ToolStrip();
-            this.btnNew = new System.Windows.Forms.ToolStripButton();
-            this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFirst = new System.Windows.Forms.ToolStripButton();
-            this.btnPre = new System.Windows.Forms.ToolStripButton();
-            this.btnNext = new System.Windows.Forms.ToolStripButton();
-            this.btnLast = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolBtn = new System.Windows.Forms.ToolStrip();
             this.tbControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tpControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.toolFaTypeDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // cCode
@@ -80,7 +70,7 @@
             // cName
             // 
             this.cName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cName.Label = "名称：";
+            this.cName.Label = "姓名：";
             this.cName.LabelWidth = 85;
             this.cName.Location = new System.Drawing.Point(3, 35);
             this.cName.Name = "cName";
@@ -160,7 +150,7 @@
             this.cPhone.LabelWidth = 85;
             this.cPhone.Location = new System.Drawing.Point(3, 163);
             this.cPhone.Name = "cPhone";
-            this.cPhone.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cPhone.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cPhone.Size = new System.Drawing.Size(428, 26);
             this.cPhone.TabIndex = 11;
             this.cPhone.TextWidth = 100;
@@ -173,7 +163,7 @@
             this.cBank.LabelWidth = 85;
             this.cBank.Location = new System.Drawing.Point(3, 323);
             this.cBank.Name = "cBank";
-            this.cBank.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cBank.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cBank.Size = new System.Drawing.Size(428, 26);
             this.cBank.TabIndex = 12;
             this.cBank.TextWidth = 100;
@@ -186,7 +176,7 @@
             this.cBankAccount.LabelWidth = 85;
             this.cBankAccount.Location = new System.Drawing.Point(3, 355);
             this.cBankAccount.Name = "cBankAccount";
-            this.cBankAccount.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cBankAccount.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cBankAccount.Size = new System.Drawing.Size(428, 26);
             this.cBankAccount.TabIndex = 13;
             this.cBankAccount.TextWidth = 100;
@@ -199,7 +189,7 @@
             this.cEmail.LabelWidth = 85;
             this.cEmail.Location = new System.Drawing.Point(3, 387);
             this.cEmail.Name = "cEmail";
-            this.cEmail.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cEmail.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cEmail.Size = new System.Drawing.Size(428, 26);
             this.cEmail.TabIndex = 14;
             this.cEmail.TextWidth = 100;
@@ -207,12 +197,14 @@
             // 
             // cDepartment
             // 
+            this.cDepartment.DataTableName = "CM_Department";
             this.cDepartment.DataType = TS.Sys.Widgets.Refer.ReferType.Department;
             this.cDepartment.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cDepartment.Label = "部门：";
             this.cDepartment.LabelWidth = 85;
             this.cDepartment.Location = new System.Drawing.Point(3, 67);
             this.cDepartment.Name = "cDepartment";
+            this.cDepartment.ReferMapping = "";
             this.cDepartment.Require = TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.True;
             this.cDepartment.Size = new System.Drawing.Size(428, 26);
             this.cDepartment.TabIndex = 16;
@@ -222,7 +214,7 @@
             // 
             this.iSex.CbxFont = null;
             this.iSex.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.iSex.Editable = false;
+            this.iSex.Editable = true;
             this.iSex.ItemValues = "1:男;0:女";
             this.iSex.Label = "性别：";
             this.iSex.LabelWidth = 85;
@@ -245,7 +237,7 @@
             this.dBirthDate.Require = TS.Sys.Widgets.LabelDateTime.RequireSelect.True;
             this.dBirthDate.Size = new System.Drawing.Size(428, 26);
             this.dBirthDate.TabIndex = 18;
-            this.dBirthDate.Value = "2011/10/19";
+            this.dBirthDate.Value = "2011-10-19";
             // 
             // cID
             // 
@@ -254,7 +246,7 @@
             this.cID.LabelWidth = 85;
             this.cID.Location = new System.Drawing.Point(3, 195);
             this.cID.Name = "cID";
-            this.cID.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cID.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cID.Size = new System.Drawing.Size(428, 26);
             this.cID.TabIndex = 19;
             this.cID.TextWidth = 100;
@@ -271,7 +263,7 @@
             this.dEnterDate.Require = TS.Sys.Widgets.LabelDateTime.RequireSelect.True;
             this.dEnterDate.Size = new System.Drawing.Size(428, 26);
             this.dEnterDate.TabIndex = 20;
-            this.dEnterDate.Value = "2011/10/19";
+            this.dEnterDate.Value = "2011-10-19";
             // 
             // dExitDate
             // 
@@ -284,7 +276,7 @@
             this.dExitDate.Require = TS.Sys.Widgets.LabelDateTime.RequireSelect.True;
             this.dExitDate.Size = new System.Drawing.Size(428, 26);
             this.dExitDate.TabIndex = 21;
-            this.dExitDate.Value = "2011/10/19";
+            this.dExitDate.Value = "2011-10-19";
             // 
             // cAddress
             // 
@@ -293,7 +285,7 @@
             this.cAddress.LabelWidth = 85;
             this.cAddress.Location = new System.Drawing.Point(3, 291);
             this.cAddress.Name = "cAddress";
-            this.cAddress.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cAddress.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cAddress.Size = new System.Drawing.Size(428, 26);
             this.cAddress.TabIndex = 22;
             this.cAddress.TextWidth = 100;
@@ -319,28 +311,17 @@
             this.cRemark.LabelWidth = 85;
             this.cRemark.Location = new System.Drawing.Point(3, 419);
             this.cRemark.Name = "cRemark";
-            this.cRemark.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.True;
+            this.cRemark.Require = TS.Sys.Widgets.LabelEdit.RequireSelect.False;
             this.cRemark.Size = new System.Drawing.Size(428, 26);
             this.cRemark.TabIndex = 23;
             this.cRemark.TextWidth = 100;
             this.cRemark.Value = "";
             // 
-            // btnExit
-            // 
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(36, 42);
-            this.btnExit.Text = "退出";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.toolFaTypeDetail, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.toolBtn, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbControl, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -351,105 +332,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(454, 573);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // toolFaTypeDetail
+            // toolBtn
             // 
-            this.toolFaTypeDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolFaTypeDetail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnNew,
-            this.btnSave,
-            this.toolStripSeparator1,
-            this.btnFirst,
-            this.btnPre,
-            this.btnNext,
-            this.btnLast,
-            this.toolStripSeparator2,
-            this.btnExit});
-            this.toolFaTypeDetail.Location = new System.Drawing.Point(0, 0);
-            this.toolFaTypeDetail.Name = "toolFaTypeDetail";
-            this.toolFaTypeDetail.Size = new System.Drawing.Size(454, 45);
-            this.toolFaTypeDetail.TabIndex = 0;
-            this.toolFaTypeDetail.Text = "toolStrip1";
-            // 
-            // btnNew
-            // 
-            this.btnNew.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(36, 42);
-            this.btnNew.Text = "新增";
-            this.btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::TS.Forms.Properties.Resources.Save;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(36, 42);
-            this.btnSave.Text = "保存";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 45);
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Image = global::TS.Forms.Properties.Resources.page_first;
-            this.btnFirst.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFirst.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(36, 42);
-            this.btnFirst.Text = "首张";
-            this.btnFirst.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFirst.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
-            // 
-            // btnPre
-            // 
-            this.btnPre.Image = global::TS.Forms.Properties.Resources.page_prev;
-            this.btnPre.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPre.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(36, 42);
-            this.btnPre.Text = "前张";
-            this.btnPre.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Image = global::TS.Forms.Properties.Resources.page_next;
-            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNext.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(36, 42);
-            this.btnNext.Text = "后张";
-            this.btnNext.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnLast
-            // 
-            this.btnLast.Image = global::TS.Forms.Properties.Resources.page_last;
-            this.btnLast.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLast.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(36, 42);
-            this.btnLast.Text = "末张";
-            this.btnLast.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLast.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 45);
+            this.toolBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolBtn.Location = new System.Drawing.Point(0, 0);
+            this.toolBtn.Name = "toolBtn";
+            this.toolBtn.Size = new System.Drawing.Size(454, 45);
+            this.toolBtn.TabIndex = 0;
+            this.toolBtn.Text = "toolStrip1";
             // 
             // EmployeeDetailForm
             // 
@@ -459,14 +349,11 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EmployeeDetailForm";
             this.Text = "职员属性";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeDetailForm_FormClosing);
             this.tbControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tpControl.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.toolFaTypeDetail.ResumeLayout(false);
-            this.toolFaTypeDetail.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -483,11 +370,8 @@
         private TS.Sys.Widgets.LabelEdit cBankAccount;
         private TS.Sys.Widgets.LabelEdit cEmail;
         private TS.Sys.Widgets.LabelEdit cGUID;
-        private System.Windows.Forms.ToolStripButton btnExit;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ToolStrip toolFaTypeDetail;
-        private System.Windows.Forms.ToolStripButton btnNew;
-        private System.Windows.Forms.ToolStripButton btnSave;
+        private System.Windows.Forms.ToolStrip toolBtn;
         private TS.Sys.Widgets.Refer.WidgetRefer.LabelRefer cDepartment;
         private TS.Sys.Widgets.LabelDateTime dBirthDate;
         private TS.Sys.Widgets.LabelEdit cID;
@@ -496,11 +380,5 @@
         private TS.Sys.Widgets.LabelEdit cAddress;
         private TS.Sys.Widgets.LabelEdit cRemark;
         private TS.Sys.Widgets.LabelCombox iSex;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnFirst;
-        private System.Windows.Forms.ToolStripButton btnPre;
-        private System.Windows.Forms.ToolStripButton btnNext;
-        private System.Windows.Forms.ToolStripButton btnLast;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

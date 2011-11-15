@@ -5,7 +5,8 @@ using System.Reflection;
 using System.Windows.Forms;
 using TS.Sys.Platform.SysInfo.Info;
 using TS.Sys.Platform.SysInfo.Service;
-using TS.Sys.Platform.Business.Util; 
+using TS.Sys.Platform.Business.Util;
+using TS.Sys.Domain; 
 
 namespace TS.Forms.MenuList
 {
@@ -119,14 +120,37 @@ namespace TS.Forms.MenuList
         /// <param name="e"></param>
         private void menuClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Assembly tempAssembly = Assembly.GetExecutingAssembly();
-            LinkLabel link = (LinkLabel)sender;
-            String test = link.Name;
-            String formUrl = _menuMap[link.Name].ToString();
-            Type t = tempAssembly.GetType(formUrl);
-            object o = System.Activator.CreateInstance(t, null);
-            ((Form)o).MdiParent = this._mainForm;
-            ((Form)o).Show();
+            try
+            {
+                Assembly tempAssembly = Assembly.GetExecutingAssembly();
+                LinkLabel link = (LinkLabel)sender;
+                String test = link.Name;
+                String formUrl = _menuMap[link.Name].ToString();
+                Type t = tempAssembly.GetType(formUrl);
+                object o = System.Activator.CreateInstance(t, null);
+
+                int index = 0;
+                foreach (Form f in this._mainForm.MdiChildren)
+                {
+                    if (f.Name.Equals(((Form)o).Name))
+                    {
+                        f.Activate();
+                        break;
+                    }
+                    index++;
+                }
+                if (index == this._mainForm.MdiChildren.Length)
+                {
+                    ((Form)o).MdiParent = this._mainForm;
+                    ((Form)o).Show();
+                    this._mainForm.AddChildItem(((Form)o).Name, ((Form)o).Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                Msg.Show(ExceptionConst.Error_Form);
+            }
+            
         }
 
         private void initComponent()

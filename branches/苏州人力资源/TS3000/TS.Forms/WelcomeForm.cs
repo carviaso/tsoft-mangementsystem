@@ -17,7 +17,7 @@ namespace TS.Forms
     {
         private MainForm _mainForm;
         private String _modual;
-        private String _defaulEvent = "btnPu_Click";
+        private String _defaulEvent = "btnMember_Click";
         private ToolStripButton preButton;
         private MenuContext _menuContext;
 
@@ -70,28 +70,8 @@ namespace TS.Forms
         }
         
 
-        private void btnArAp_Click(object sender, EventArgs e)
-        {
-            String modual = "arap";
-            CreatMenuContext(btnArAp,modual);
-            preButton = btnArAp;
-        }
-
-        
-        private void btnSa_Click(object sender, EventArgs e)
-        {
-            String modual = "sa";
-            CreatMenuContext(btnSa,modual);
-            preButton = btnSa;
-            
-        }
-
-        private void btnPu_Click(object sender, EventArgs e)
-        {
-            String modual = "pu";
-            CreatMenuContext(btnPu, modual);
-            preButton = btnPu;
-        }
+      
+         
 
         private void CreatMenuContext(ToolStripButton btn, String modual)
         {
@@ -114,6 +94,13 @@ namespace TS.Forms
             btn.BackgroundImage = global::TS.Forms.Properties.Resources.MenuSelectedBG;
             btn.BackgroundImageLayout = ImageLayout.Stretch;
             btn.ForeColor = SystemColors.HotTrack;
+        }
+
+        private void btnMember_Click(object sender, EventArgs e)
+        {
+            String modual = "member";
+            CreatMenuContext(btnMember, modual);
+            preButton = btnMember;
         }      
          
          

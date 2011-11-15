@@ -8,12 +8,26 @@ using System.Windows.Forms;
 using TS.Forms.BusinessForm.BS;
 using TS.Forms.BusinessForm;
 using TS.Forms.BusinessForm.FA;
+using System.Collections;
 
 namespace TS.Forms
 {
     public partial class MainForm : Form
     {
         private int _count = 0;
+ 
+
+        public void AddChildItem(String name,String text)
+        {
+            ToolStripButton childForm = new ToolStripButton(); 
+            childForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            childForm.Name = name;
+            childForm.Text = text;
+            childForm.Size = new System.Drawing.Size(107, 22);
+            childForm.Click += new System.EventHandler(this.toolStripButton_Click);
+             
+        }
+
 
         public void AddForm()
         {
@@ -86,6 +100,25 @@ namespace TS.Forms
         private void MainForm_MdiChildActivate(object sender, EventArgs e)
         {
             String tset = "asdf";
+        }
+
+        private void toolStripButton_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.Name.Equals(((ToolStripButton)sender).Name))
+                {
+                    f.Activate();
+                    break;
+                }
+                 
+            } 
+        }
+
+        private void 关闭ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            String tes = "adf";
         }
  
         
