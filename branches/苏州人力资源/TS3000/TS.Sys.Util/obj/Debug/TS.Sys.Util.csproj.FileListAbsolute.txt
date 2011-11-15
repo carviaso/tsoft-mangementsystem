@@ -1,0 +1,19 @@
+D:\work\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Util.dll
+D:\work\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Util.pdb
+D:\work\TS3000\TS.Sys.Util\obj\Debug\ResolveAssemblyReference.cache
+D:\work\TS3000\TS.Sys.Util\obj\Debug\TS.Sys.Util.dll
+D:\work\TS3000\TS.Sys.Util\obj\Debug\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Util\bin\Debug\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Util\bin\Debug\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Util\obj\Debug\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Util\obj\Debug\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Sys.Util\obj\Debug\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Domain.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Platform.Exceptions.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Domain.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Platform.Exceptions.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\obj\Debug\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\obj\Debug\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\obj\Debug\TS.Sys.Util.pdb

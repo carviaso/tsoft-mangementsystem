@@ -1,0 +1,15 @@
+D:\work\TS3000\TS.Business.PU\bin\Debug\TS.Business.PU.dll
+D:\work\TS3000\TS.Business.PU\bin\Debug\TS.Business.PU.pdb
+D:\work\TS3000\TS.Business.PU\obj\Debug\ResolveAssemblyReference.cache
+D:\work\TS3000\TS.Business.PU\obj\Debug\TS.Business.PU.dll
+D:\work\TS3000\TS.Business.PU\obj\Debug\TS.Business.PU.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Business.PU\bin\Debug\TS.Business.PU.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Business.PU\bin\Debug\TS.Business.PU.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Business.PU\obj\Debug\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Business.PU\obj\Debug\TS.Business.PU.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000 - 副本 (2)\TS.Business.PU\obj\Debug\TS.Business.PU.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Business.PU\bin\Debug\TS.Business.PU.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Business.PU\bin\Debug\TS.Business.PU.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Business.PU\obj\Debug\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Business.PU\obj\Debug\TS.Business.PU.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Business.PU\obj\Debug\TS.Business.PU.pdb

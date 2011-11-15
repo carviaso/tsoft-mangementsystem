@@ -1,0 +1,5 @@
+D:\work\TSoft programs\TS3000\TS.Sys.Session\bin\Debug\TS.Sys.Session.dll
+D:\work\TSoft programs\TS3000\TS.Sys.Session\bin\Debug\TS.Sys.Session.pdb
+D:\work\TSoft programs\TS3000\TS.Sys.Session\obj\Debug\ResolveAssemblyReference.cache
+D:\work\TSoft programs\TS3000\TS.Sys.Session\obj\Debug\TS.Sys.Session.dll
+D:\work\TSoft programs\TS3000\TS.Sys.Session\obj\Debug\TS.Sys.Session.pdb
