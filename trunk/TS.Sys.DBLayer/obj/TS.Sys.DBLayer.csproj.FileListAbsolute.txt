@@ -1,0 +1,7 @@
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\bin\Debug\TS.Sys.DBLayer.dll
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\bin\Debug\TS.Sys.DBLayer.pdb
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\bin\Debug\TS.Sys.Util.dll
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\bin\Debug\TS.Sys.Util.pdb
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\obj\Debug\TS.Sys.DBLayer.dll
+D:\work\TSoft programs\TS3000\TS.Sys.DBLayer\obj\Debug\TS.Sys.DBLayer.pdb
