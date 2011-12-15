@@ -1,5 +1,0 @@
-D:\work\TSoft programs\TS3000\TS.Sys.Util\obj\Debug\ResolveAssemblyReference.cache
-D:\work\TSoft programs\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Util.dll
-D:\work\TSoft programs\TS3000\TS.Sys.Util\bin\Debug\TS.Sys.Util.pdb
-D:\work\TSoft programs\TS3000\TS.Sys.Util\obj\Debug\TS.Sys.Util.dll
-D:\work\TSoft programs\TS3000\TS.Sys.Util\obj\Debug\TS.Sys.Util.pdb
