@@ -1,0 +1,6 @@
+<db>
+<dataSource>(local)</dataSource>
+<initCataLog>TS3000SZ</initCataLog>
+<username>sa</username>
+<password>sa123456</password>
+</db>
