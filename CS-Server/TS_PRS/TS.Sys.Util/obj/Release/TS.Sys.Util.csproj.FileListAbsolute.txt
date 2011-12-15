@@ -1,0 +1,36 @@
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Release\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Release\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Release\TS.Sys.Domain.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Release\TS.Sys.Domain.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.pdb
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\obj\Release\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\obj\Release\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\TS3000\TS.Sys.Util\obj\Release\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Domain.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Domain.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\obj\Release\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\obj\Release\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS_PRS\TS.Sys.Util\obj\Release\TS.Sys.Util.pdb
+D:\work\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Util.dll
+D:\work\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Util.pdb
+D:\work\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Domain.dll
+D:\work\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.dll
+D:\work\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Domain.pdb
+D:\work\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.pdb
+D:\work\TS_PRS\TS.Sys.Util\obj\Release\ResolveAssemblyReference.cache
+D:\work\TS_PRS\TS.Sys.Util\obj\Release\TS.Sys.Util.dll
+D:\work\TS_PRS\TS.Sys.Util\obj\Release\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Util.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Domain.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Domain.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\bin\Release\TS.Sys.Platform.Exceptions.pdb
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\obj\Release\ResolveAssemblyReference.cache
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\obj\Release\TS.Sys.Util.dll
+D:\Project Files\Work Projects\TSoft Projects\苏州川润人力资源管理系统\TS_PRS\TS.Sys.Util\obj\Release\TS.Sys.Util.pdb
