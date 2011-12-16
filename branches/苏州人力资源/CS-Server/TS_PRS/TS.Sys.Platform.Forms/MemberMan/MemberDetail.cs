@@ -70,6 +70,7 @@ namespace TS.Sys.Platform.Forms.MemberMan
             :this()
         {
             InitForm();
+            this.cCompany.Value = code;    
             this.cName.Focus();
 
         }

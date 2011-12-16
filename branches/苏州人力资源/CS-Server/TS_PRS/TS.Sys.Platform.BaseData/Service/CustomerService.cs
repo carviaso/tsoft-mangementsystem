@@ -4,6 +4,7 @@ using TS.Sys.Platform.BaseData.Dao;
 using TS.Sys.Platform.BaseData.Info;
 using TS.Sys.Platform.Business.Info;
 using TS.Sys.Platform.Business.Service;
+using System.Collections;
 
 namespace TS.Sys.Platform.BaseData.Service
 {
@@ -51,5 +52,11 @@ namespace TS.Sys.Platform.BaseData.Service
         {
             return custDao.QueryByRegion(cRegion);
         }
+
+        public ArrayList GetAllList()
+        {
+            return custDao.GetResultList(null);
+        }
+ 
     }
 }

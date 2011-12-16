@@ -10,6 +10,7 @@ using TS.Sys.Platform.SysInfo.Info;
 using TS.Sys.Platform.SysInfo.Static;
 using TS.Sys.Session;
 using System.Threading;
+using TS.PRS.MemberMan.Assit;
 
 namespace TS.Sys.Platform.Forms
 {
@@ -191,6 +192,24 @@ namespace TS.Sys.Platform.Forms
             if (diaResult == DialogResult.OK)
             {
                 btnSyncMember_Click(null, null);
+            }
+        }
+
+        private void 清空业务数据慎用ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult diaResult = Msg.Show("是否要清空所有业务数据？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (diaResult == DialogResult.OK)
+            {
+                new PwdConfirm("all").ShowDialog();
+            }
+        }
+
+        private void 清除垃圾数据慎用ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult diaResult = Msg.Show("是否要清空垃圾业务数据？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (diaResult == DialogResult.OK)
+            {
+                new PwdConfirm("rabbish").ShowDialog();  
             }
         }
 

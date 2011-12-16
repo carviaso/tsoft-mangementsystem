@@ -69,11 +69,22 @@ namespace TS.PRS.MemberMan.Service
              memDao.ModifyMember(memInfo);
         }
 
+        /// <summary>
+        /// 删除会员
+        /// 1、校验会员是否有推荐关系，如果有则不能删除
+        /// 2、删除会员信息
+        /// 3、删除会员的推荐信息
+        /// </summary>
+        /// <param name="baseInfo"></param>
         public override void Delete(BaseInfo baseInfo)
         {
             MembersInfo memInfo = (MembersInfo)baseInfo;
             ValidaForRecomend(memInfo);
-             memDao.DeleteMember(memInfo);
+            List<SqlCommand> commands = new List<SqlCommand>();
+            commands.Add(memDao.GetDelMemberCommand(memInfo));
+            commands.Add(memDao.GetDelRecommCommand(memInfo));
+            DbSvr.GetDbService().UpdateInTransaction(commands);
+      
         }
 
         public override void Forbidden(BaseInfo baseInfo)

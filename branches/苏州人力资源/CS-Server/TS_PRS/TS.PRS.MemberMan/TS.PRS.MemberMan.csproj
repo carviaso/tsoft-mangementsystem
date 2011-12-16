@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,13 @@
   <ItemGroup>
     <Compile Include="Adapter\MemberAdapter.cs" />
     <Compile Include="Adapter\MemberAllowAdapter.cs" />
+    <Compile Include="Assit\PwdConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Assit\PwdConfirm.Designer.cs">
+      <DependentUpon>PwdConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Assit\TSoftAssit.cs" />
     <Compile Include="Business\MemberReommendModual.cs" />
     <Compile Include="Connection\WebConn.cs" />
     <Compile Include="Dao\MembersAllowDao.cs" />
@@ -84,6 +92,11 @@
       <Project>{BE0D2A13-56CF-4130-A473-64533880EBE7}</Project>
       <Name>TS.Sys.Platform.Widgets</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assit\PwdConfirm.resx">
+      <DependentUpon>PwdConfirm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

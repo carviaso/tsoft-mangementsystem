@@ -10,7 +10,7 @@ namespace TS.Sys.Platform.BaseData.Dao
 {
     public class CustomerDao:BaseDao
     {
-        private static string SQL_ALL = "select * from from CM_Customer cust  ";
+        private static string SQL_ALL = "select * from CM_Customer cust  ";
         private static string SQL_LIST = "select cust.cGUID,cust.cCode,cust.cName,rg.cName cRegion,cust.cTimeStamp,CASE WHEN cust.iForbidden = 0 THEN '启用' ELSE '禁用' END iStatus from CM_Customer cust left join CM_Region rg on cust.cRegion = rg.cCode ";
         private static string TABLE = "CM_Customer";
 

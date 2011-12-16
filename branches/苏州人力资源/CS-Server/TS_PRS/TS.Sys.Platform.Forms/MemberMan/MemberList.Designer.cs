@@ -29,19 +29,26 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolAccount = new System.Windows.Forms.ToolStrip();
-            this.gridMember = new System.Windows.Forms.DataGridView();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnView = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeCustomer = new System.Windows.Forms.TreeView();
+            this.gridMember = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMember)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,13 +57,14 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 781F));
             this.tableLayoutPanel1.Controls.Add(this.toolAccount, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.gridMember, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(781, 460);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
@@ -76,44 +84,6 @@
             this.toolAccount.Name = "toolAccount";
             this.toolAccount.Size = new System.Drawing.Size(781, 45);
             this.toolAccount.TabIndex = 2;
-            // 
-            // gridMember
-            // 
-            this.gridMember.AllowUserToAddRows = false;
-            this.gridMember.AllowUserToDeleteRows = false;
-            this.gridMember.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gridMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridMember.ColumnHeadersHeight = 35;
-            this.gridMember.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridMember.Location = new System.Drawing.Point(3, 48);
-            this.gridMember.MultiSelect = false;
-            this.gridMember.Name = "gridMember";
-            this.gridMember.ReadOnly = true;
-            this.gridMember.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.gridMember.RowHeadersVisible = false;
-            this.gridMember.RowTemplate.Height = 23;
-            this.gridMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMember.Size = new System.Drawing.Size(775, 409);
-            this.gridMember.TabIndex = 3;
-            this.gridMember.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMember_CellDoubleClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 45);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 45);
             // 
             // btnNew
             // 
@@ -159,6 +129,11 @@
             this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 45);
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.Image = global::TS.Sys.Platform.Forms.Properties.Resources.Filter;
@@ -170,6 +145,11 @@
             this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 45);
+            // 
             // btnExit
             // 
             this.btnExit.Image = global::TS.Sys.Platform.Forms.Properties.Resources.Exit;
@@ -180,6 +160,69 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 48);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeCustomer);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.gridMember);
+            this.splitContainer1.Size = new System.Drawing.Size(775, 409);
+            this.splitContainer1.SplitterDistance = 162;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // treeCustomer
+            // 
+            this.treeCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeCustomer.Location = new System.Drawing.Point(0, 0);
+            this.treeCustomer.Name = "treeCustomer";
+            this.treeCustomer.Size = new System.Drawing.Size(162, 409);
+            this.treeCustomer.TabIndex = 0;
+            this.treeCustomer.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCustomer_AfterSelect);
+            // 
+            // gridMember
+            // 
+            this.gridMember.AllowUserToAddRows = false;
+            this.gridMember.AllowUserToDeleteRows = false;
+            this.gridMember.AllowUserToResizeRows = false;
+            this.gridMember.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gridMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridMember.ColumnHeadersHeight = 40;
+            this.gridMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridMember.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gridMember.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridMember.Location = new System.Drawing.Point(0, 0);
+            this.gridMember.MultiSelect = false;
+            this.gridMember.Name = "gridMember";
+            this.gridMember.ReadOnly = true;
+            this.gridMember.RowHeadersVisible = false;
+            this.gridMember.RowTemplate.Height = 23;
+            this.gridMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridMember.Size = new System.Drawing.Size(609, 409);
+            this.gridMember.TabIndex = 4;
+            this.gridMember.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMember_CellDoubleClick);
             // 
             // MemberListForm
             // 
@@ -193,6 +236,10 @@
             this.tableLayoutPanel1.PerformLayout();
             this.toolAccount.ResumeLayout(false);
             this.toolAccount.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMember)).EndInit();
             this.ResumeLayout(false);
 
@@ -207,10 +254,12 @@
         private System.Windows.Forms.ToolStrip toolAccount;
         private System.Windows.Forms.ToolStripButton btnNew;
         private System.Windows.Forms.ToolStripButton btnExit;
-        private System.Windows.Forms.DataGridView gridMember;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView gridMember;
+        private System.Windows.Forms.TreeView treeCustomer;
 
     }
 }
