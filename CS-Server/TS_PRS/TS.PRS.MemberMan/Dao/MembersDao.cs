@@ -11,7 +11,7 @@ namespace TS.PRS.MemberMan.Dao
     internal class MembersDao:BaseDao
     {
         private static string SQL_ALL = "select * from CM_Member mem  ";
-        private static string SQL_LIST = "select mem.cCode,mem.cName,mem.cId,CONVERT(varchar(100), mem.dRecommendDate, 23) dRecommendDate,mem.cCompany,CASE WHEN recom.cName IS NULL THEN '无' ELSE recom.cName END cRecomm,mem.cGUID,mem.cTimeStamp from CM_Member mem left join CM_Member recom on mem.cRecomMember = recom.cCode";
+        private static string SQL_LIST = "select mem.cCode,mem.cName,mem.cId,CONVERT(varchar(100), mem.dRecommendDate, 23) dRecommendDate,cust.cName cCompany,CASE WHEN recom.cName IS NULL THEN '无' ELSE recom.cName END cRecomm,mem.cGUID,mem.cTimeStamp from CM_Member mem left join CM_Member recom on mem.cRecomMember = recom.cCode left join CM_Customer cust on mem.cCompany = cust.cCode";
         private static string SQL_MAXNUM = "select top 1 cCode from CM_Member order by cCode desc ";
         private static string TABLE = "CM_Member";
         private static string TABLE_RECOMMEND = "MEM_MemberRecommend";
@@ -65,10 +65,19 @@ namespace TS.PRS.MemberMan.Dao
             Modify(meminfo);
             
         }
-
-        internal void DeleteMember(MembersInfo meminfo)
+         
+        internal SqlCommand GetDelMemberCommand(MembersInfo meminfo)
         {
-             Delete(meminfo);
+            return GetDelCommand(meminfo);
+        }
+
+        internal SqlCommand GetDelRecommCommand(MembersInfo meminfo)
+        {
+          
+            Hashtable con = new Hashtable();
+            con.Add("cMemberCode", meminfo.cCode);
+            return  DbSvr.GetDbService().GetDeleteCommand(TABLE_RECOMMEND,con);
+            
         }
 
         internal void ForbiddenMember(MembersInfo meminfo)
@@ -158,8 +167,13 @@ namespace TS.PRS.MemberMan.Dao
         /// 查询所有记录
         /// </summary>
         /// <returns></returns>
-        internal DataTable GetDataTable(object con)
+        internal DataTable GetDataTable(object custCode)
         {
+            Object con = "";
+            if (custCode != null)
+            {
+                con = " where mem.cCompany = '" + custCode + "'";
+            }
             String sql = SQL_LIST + con;
             DataTable result = DbSvr.GetDbService().GetDataTable(sql);
             return result;

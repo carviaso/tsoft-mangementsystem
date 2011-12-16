@@ -4,10 +4,13 @@ using System.Windows.Forms;
 using TS.PRS.MemberMan.Info;
 using TS.PRS.MemberMan.Service;
 using TS.Sys.Domain;
+using TS.Sys.Platform.BaseData.Service;
 using TS.Sys.Platform.Business.Util;
 using TS.Sys.Platform.Exceptions;
 using TS.Sys.Platform.SecuAccess;
-using TS.Sys.Platform.Widgets.Refer.WidgetRefer; 
+using TS.Sys.Platform.Widgets.Refer.WidgetRefer;
+using System.Collections;
+using TS.Sys.Platform.Widgets.Tree; 
 
 namespace TS.Sys.Platform.Forms.MemberMan
 {
@@ -16,14 +19,41 @@ namespace TS.Sys.Platform.Forms.MemberMan
         private LabelRefer _refer; 
         private int _referFlag;
         private MembersService mbService;
+        private CustomerService custService;
         private MembersInfo mbInfo;
+        private String _cCode;
         public MemberListForm()
         {
             InitializeComponent();
             mbService = new MembersService();
             mbInfo = new MembersInfo();
+            custService = new CustomerService();
+            InitTree();
             InitGrid();
              
+        }
+
+        private void InitTree()
+        {
+
+            ArrayList result = custService.GetAllList();
+
+            DataTreeNode[] nodes = new DataTreeNode[result.Count];
+            int index = 0;
+            foreach (Object o in result)
+            {
+                Hashtable detail = (Hashtable)o;
+                DataTreeNode node = new DataTreeNode();
+                node.Name = detail["cCode"].ToString();
+                node.Text = detail["cCode"].ToString() + " " + detail["cName"].ToString();
+                node.oElement = detail;
+                nodes[index] = node;
+                index++;
+            }
+            TreeNode root = new TreeNode("公司", nodes);
+            root.Name = "000000";
+            treeCustomer.Nodes.Add(root);
+
         }
 
         /// <summary>
@@ -54,7 +84,7 @@ namespace TS.Sys.Platform.Forms.MemberMan
         /// </summary>
         private void InitGrid()
         {
-            GridFetcher();
+            GridFetcher(null);
             
             gridMember.Columns["cCode"].HeaderText = "会员编号";
             gridMember.Columns["cName"].HeaderText = "会员名称";
@@ -73,9 +103,9 @@ namespace TS.Sys.Platform.Forms.MemberMan
         /// 列表数据取值器
         /// </summary>
         /// <param name="con">条件</param>
-        private void GridFetcher()
+        private void GridFetcher(Object o)
         {
-            DataTable result = mbService.GetDataTable(null);
+            DataTable result = mbService.GetDataTable(o);
             gridMember.DataSource = result;
         }
 
@@ -138,7 +168,7 @@ namespace TS.Sys.Platform.Forms.MemberMan
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            GridFetcher();
+            treeCustomer_AfterSelect(null, null);
         }
 
         
@@ -159,9 +189,22 @@ namespace TS.Sys.Platform.Forms.MemberMan
             }
             else
             {
-                MemberDetailForm mbForm = new MemberDetailForm("new");
+                MemberDetailForm mbForm = new MemberDetailForm(_cCode);
                 mbForm.MemberlistForm = this;
                 mbForm.ShowDialog();
+            }
+        }
+
+        private void treeCustomer_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            _cCode = treeCustomer.SelectedNode.Name;
+            if ("000000".Equals(_cCode))
+            {
+                GridFetcher(null);
+            }
+            else
+            {
+                GridFetcher(_cCode);
             }
         } 
     }

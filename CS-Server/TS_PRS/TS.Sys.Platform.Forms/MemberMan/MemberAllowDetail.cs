@@ -23,7 +23,38 @@ namespace TS.Sys.Platform.Forms.MemberMan
         private String cPeriod;
         private String cTitle = "会员津贴";
         private MemberReommendModual _mr;
-       
+        //人员增长幅度
+        private int memberNumAdd = 20;
+        //会员津贴增长额度
+        private int allowPercent = 5;
+        //津贴起始额度
+        private int allowInit = 10;
+        //人员最大值
+        private int memberNumMax = 50;
+
+        public int MemberNewAdd
+        {
+            get { return this.memberNumAdd; }
+            set { this.memberNumAdd = value; }
+        }
+
+        public int AllowPercent
+        {
+            get { return this.allowPercent; }
+            set { this.allowPercent = value; }
+        }
+
+        public int AllowInit
+        {
+            get { return this.allowInit; }
+            set { this.allowInit = value; }
+        }
+
+        public int MemberNumMax
+        {
+            get { return this.memberNumMax; }
+            set { this.memberNumMax = value; }
+        }
 
         internal MemberAllowListForm MAListForm
         {
@@ -218,18 +249,24 @@ namespace TS.Sys.Platform.Forms.MemberMan
         /// <returns></returns>
         private Decimal CaculateTearmAllow(int AllowSum, int teamNum)
         {
-             
-            int memNum = (int)(teamNum * 0.1);
-            if (memNum == 0)
+            Decimal sum = new Decimal(0);
+            if (teamNum < 10)
             {
-                return new Decimal(0);
+                sum = AllowSum;
             }
-            else
+            else if (teamNum >= 10 && teamNum <= 29)
             {
-                Decimal sum = Decimal.Parse(((memNum * 0.05+0.05)  * AllowSum).ToString());
-                return sum;
+                sum = Decimal.Parse((AllowSum*(1+0.1)).ToString());
             }
-           
+            else if (teamNum >= 30 && teamNum <= 49)
+            {
+                sum = Decimal.Parse((AllowSum * (1 + 0.15)).ToString());
+            }
+            else if (teamNum >= 50)
+            {
+                sum = Decimal.Parse((AllowSum * (1 + 0.2)).ToString());
+            }
+            return sum;          
 
         }
 
@@ -256,9 +293,9 @@ namespace TS.Sys.Platform.Forms.MemberMan
                 }
                 int AllowSum = _mr.BaseAllowCo * recNum;//总奖金
                 Decimal allow = CaculateTearmAllow(AllowSum,teamNum);//计算奖励奖金
-                sum = AllowSum + allow;
+                //sum = AllowSum + allow;
                 result.Add("TeamNum",teamNum);
-                result.Add("Allow", sum);
+                result.Add("Allow", allow);
                 //设置团队人数 
                 return result;
             }
@@ -277,7 +314,8 @@ namespace TS.Sys.Platform.Forms.MemberMan
         private void ClearGrid()
         {
             this.gridMember.Rows.Clear();
-        } 
+        }
+ 
  
     }
 }

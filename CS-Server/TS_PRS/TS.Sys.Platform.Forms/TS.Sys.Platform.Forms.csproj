@@ -131,6 +131,12 @@
     <Compile Include="MemberMan\MemberAllowDetail.Designer.cs">
       <DependentUpon>MemberAllowDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemberMan\MemberAllowFomula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberMan\MemberAllowFomula.Designer.cs">
+      <DependentUpon>MemberAllowFomula.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberMan\MemberAllowList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MemberMan\MemberAllowDetail.resx">
       <DependentUpon>MemberAllowDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberMan\MemberAllowFomula.resx">
+      <DependentUpon>MemberAllowFomula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberMan\MemberAllowList.resx">
       <DependentUpon>MemberAllowList.cs</DependentUpon>

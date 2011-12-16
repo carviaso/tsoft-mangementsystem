@@ -31,7 +31,7 @@ namespace TS.Sys.Platform.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (DateTime.Today > DateTime.Parse("2011-12-18"))
+            if (DateTime.Today > DateTime.Parse("2011-12-20"))
             {
                 Msg.Show("试用期已到，请联系天时工作室！");
 
