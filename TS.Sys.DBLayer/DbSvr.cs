@@ -201,7 +201,7 @@ namespace TS.Sys.DBLayer
             StringBuilder sqlBodySB = new StringBuilder("delete from ").Append(tableName).Append(" ");
 
             String sqlCondition = "";
-            if(values.Count!=0)
+            if(values!=null&&values.Count!=0)
             {
                 StringBuilder sqlConditionSB = new StringBuilder("where ");
                 foreach (String key in values.Keys)
