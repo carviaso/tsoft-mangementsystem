@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections;
+using System.Windows.Forms;
 using TS.Sys.DBLayer;
 using TS.Sys.Domain;
-using TS.Sys.Platform.Exceptions;
-using TS.Sys.Session;
 using TS.Sys.Platform.SysInfo.Info;
+using TS.Sys.Session;
 
 namespace TS.Sys.Platform.Forms
 {
@@ -31,7 +30,7 @@ namespace TS.Sys.Platform.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (DateTime.Today > DateTime.Parse("2011-12-20"))
+            if (DateTime.Today > DateTime.Parse("2011-12-30"))
             {
                 Msg.Show("试用期已到，请联系天时工作室！");
 

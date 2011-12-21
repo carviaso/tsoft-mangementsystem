@@ -128,6 +128,11 @@ namespace TS.Sys.Platform.Widgets.Refer.Control
                 return this._dataFetcher;
             }
         }
+
+        public void Refresh()
+        {
+            DataSource = _dataFetcher.QueryVarResult(null);
+        }
          
          
         public DataView DataView
@@ -246,6 +251,8 @@ namespace TS.Sys.Platform.Widgets.Refer.Control
         {
             if (dropDown != null && DataView != null)
             {
+               
+                //刷新数据
                 dataGridViewHost.AutoSize = _IsAutoSize;
                 _height = GetHeight(DataView);
                 if (_height == 0)

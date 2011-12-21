@@ -11,6 +11,7 @@ using TS.Sys.Platform.SysInfo.Static;
 using TS.Sys.Session;
 using System.Threading;
 using TS.PRS.MemberMan.Assit;
+using TS.Sys.Platform.Forms.MemberMan;
 
 namespace TS.Sys.Platform.Forms
 {
@@ -211,6 +212,11 @@ namespace TS.Sys.Platform.Forms
             {
                 new PwdConfirm("rabbish").ShowDialog();  
             }
+        }
+
+        private void 批量添加测试数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new MemberTest().ShowDialog();
         }
 
         

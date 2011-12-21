@@ -16,8 +16,8 @@ namespace TS.Sys.DBLayer
         private static void init()
         {
             //loadFromRegistery();
-            //loadFromXML();
-            loadData();
+            loadFromXML();
+            //loadData();
         }
 
         private static void loadFromRegistery()
