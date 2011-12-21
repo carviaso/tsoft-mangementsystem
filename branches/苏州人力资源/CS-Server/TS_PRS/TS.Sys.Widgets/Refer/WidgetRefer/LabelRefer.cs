@@ -235,6 +235,7 @@ namespace TS.Sys.Platform.Widgets.Refer.WidgetRefer
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+           
             this.dataControl.ShowDropDown();
         }
 
