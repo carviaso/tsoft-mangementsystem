@@ -32,14 +32,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tpControl = new System.Windows.Forms.TableLayoutPanel();
-            this.cName = new TS.Sys.Platform.Widgets.LabelEdit();
             this.cCode = new TS.Sys.Platform.Widgets.LabelEdit();
-            this.cCompany = new TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer();
-            this.cRecomMember = new TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer();
-            this.dRecommendDate = new TS.Sys.Platform.Widgets.LabelDateTime();
             this.cGUID = new TS.Sys.Platform.Widgets.LabelEdit();
             this.cTimeStamp = new TS.Sys.Platform.Widgets.LabelEdit();
+            this.cName = new TS.Sys.Platform.Widgets.LabelEdit();
             this.cId = new TS.Sys.Platform.Widgets.LabelEdit();
+            this.dRecommendDate = new TS.Sys.Platform.Widgets.LabelDateTime();
+            this.cRecomMember = new TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer();
+            this.cCompany = new TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer();
             this.toolBtn = new System.Windows.Forms.ToolStrip();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,19 +123,6 @@
             this.tpControl.Size = new System.Drawing.Size(502, 198);
             this.tpControl.TabIndex = 1;
             // 
-            // cName
-            // 
-            this.cName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cName.Label = "姓名：";
-            this.cName.LabelWidth = 75;
-            this.cName.Location = new System.Drawing.Point(3, 35);
-            this.cName.Name = "cName";
-            this.cName.Require = TS.Sys.Platform.Widgets.LabelEdit.RequireSelect.True;
-            this.cName.Size = new System.Drawing.Size(496, 26);
-            this.cName.TabIndex = 0;
-            this.cName.TextWidth = 100;
-            this.cName.Value = "";
-            // 
             // cCode
             // 
             this.cCode.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -149,51 +136,6 @@
             this.cCode.TabIndex = 27;
             this.cCode.TextWidth = 100;
             this.cCode.Value = "";
-            // 
-            // cCompany
-            // 
-            this.cCompany.DataTableName = "CM_Customer";
-            this.cCompany.DataType = TS.Sys.Platform.Widgets.Refer.ReferType.Customer;
-            this.cCompany.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cCompany.Label = "任职公司：";
-            this.cCompany.LabelWidth = 75;
-            this.cCompany.Location = new System.Drawing.Point(3, 99);
-            this.cCompany.Name = "cCompany";
-            this.cCompany.ReferForm = "TS.Sys.Platform.Forms.BaseDataForms.CustomerForm";
-            this.cCompany.ReferMapping = "";
-            this.cCompany.Require = TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.True;
-            this.cCompany.Size = new System.Drawing.Size(496, 26);
-            this.cCompany.TabIndex = 28;
-            this.cCompany.Value = null;
-            // 
-            // cRecomMember
-            // 
-            this.cRecomMember.DataTableName = "CM_Member";
-            this.cRecomMember.DataType = TS.Sys.Platform.Widgets.Refer.ReferType.Member;
-            this.cRecomMember.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cRecomMember.Label = "推荐人：";
-            this.cRecomMember.LabelWidth = 75;
-            this.cRecomMember.Location = new System.Drawing.Point(3, 131);
-            this.cRecomMember.Name = "cRecomMember";
-            this.cRecomMember.ReferForm = "TS.Sys.Platform.Forms.MemberMan.MemberListForm";
-            this.cRecomMember.ReferMapping = "";
-            this.cRecomMember.Require = TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
-            this.cRecomMember.Size = new System.Drawing.Size(496, 26);
-            this.cRecomMember.TabIndex = 29;
-            this.cRecomMember.Value = null;
-            // 
-            // dRecommendDate
-            // 
-            this.dRecommendDate.DateTimeWidth = 100;
-            this.dRecommendDate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dRecommendDate.Label = "推荐时间：";
-            this.dRecommendDate.LabelWidth = 75;
-            this.dRecommendDate.Location = new System.Drawing.Point(3, 163);
-            this.dRecommendDate.Name = "dRecommendDate";
-            this.dRecommendDate.Require = TS.Sys.Platform.Widgets.LabelDateTime.RequireSelect.False;
-            this.dRecommendDate.Size = new System.Drawing.Size(496, 26);
-            this.dRecommendDate.TabIndex = 30;
-            this.dRecommendDate.Value = new System.DateTime(2011, 11, 27, 0, 0, 0, 0);
             // 
             // cGUID
             // 
@@ -221,6 +163,19 @@
             this.cTimeStamp.Value = "";
             this.cTimeStamp.Visible = false;
             // 
+            // cName
+            // 
+            this.cName.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cName.Label = "姓名：";
+            this.cName.LabelWidth = 75;
+            this.cName.Location = new System.Drawing.Point(3, 35);
+            this.cName.Name = "cName";
+            this.cName.Require = TS.Sys.Platform.Widgets.LabelEdit.RequireSelect.True;
+            this.cName.Size = new System.Drawing.Size(496, 26);
+            this.cName.TabIndex = 0;
+            this.cName.TextWidth = 100;
+            this.cName.Value = "";
+            // 
             // cId
             // 
             this.cId.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -233,6 +188,51 @@
             this.cId.TabIndex = 9;
             this.cId.TextWidth = 100;
             this.cId.Value = "";
+            // 
+            // dRecommendDate
+            // 
+            this.dRecommendDate.DateTimeWidth = 100;
+            this.dRecommendDate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dRecommendDate.Label = "推荐时间：";
+            this.dRecommendDate.LabelWidth = 75;
+            this.dRecommendDate.Location = new System.Drawing.Point(3, 163);
+            this.dRecommendDate.Name = "dRecommendDate";
+            this.dRecommendDate.Require = TS.Sys.Platform.Widgets.LabelDateTime.RequireSelect.False;
+            this.dRecommendDate.Size = new System.Drawing.Size(496, 26);
+            this.dRecommendDate.TabIndex = 30;
+            this.dRecommendDate.Value = new System.DateTime(2011, 11, 27, 0, 0, 0, 0);
+            // 
+            // cRecomMember
+            // 
+            this.cRecomMember.DataTableName = "CM_Member";
+            this.cRecomMember.DataType = TS.Sys.Platform.Widgets.Refer.ReferType.Member;
+            this.cRecomMember.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cRecomMember.Label = "推荐人：";
+            this.cRecomMember.LabelWidth = 75;
+            this.cRecomMember.Location = new System.Drawing.Point(3, 131);
+            this.cRecomMember.Name = "cRecomMember";
+            this.cRecomMember.ReferForm = "TS.Sys.Platform.Forms.MemberMan.MemberListForm";
+            this.cRecomMember.ReferMapping = "";
+            this.cRecomMember.Require = TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.False;
+            this.cRecomMember.Size = new System.Drawing.Size(496, 26);
+            this.cRecomMember.TabIndex = 29;
+            this.cRecomMember.Value = null;
+            // 
+            // cCompany
+            // 
+            this.cCompany.DataTableName = "CM_Customer";
+            this.cCompany.DataType = TS.Sys.Platform.Widgets.Refer.ReferType.Customer;
+            this.cCompany.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cCompany.Label = "任职公司：";
+            this.cCompany.LabelWidth = 75;
+            this.cCompany.Location = new System.Drawing.Point(3, 99);
+            this.cCompany.Name = "cCompany";
+            this.cCompany.ReferForm = "TS.Sys.Platform.Forms.BaseDataForms.CustomerForm";
+            this.cCompany.ReferMapping = "";
+            this.cCompany.Require = TS.Sys.Platform.Widgets.Refer.WidgetRefer.LabelRefer.RequireSelect.True;
+            this.cCompany.Size = new System.Drawing.Size(496, 26);
+            this.cCompany.TabIndex = 28;
+            this.cCompany.Value = null;
             // 
             // toolBtn
             // 
@@ -315,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 283);
+            this.ClientSize = new System.Drawing.Size(521, 280);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MemberDetailForm";
             this.Text = "会员信息";
