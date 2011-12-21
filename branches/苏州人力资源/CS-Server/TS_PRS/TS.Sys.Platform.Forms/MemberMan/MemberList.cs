@@ -93,6 +93,7 @@ namespace TS.Sys.Platform.Forms.MemberMan
             gridMember.Columns["dRecommendDate"].HeaderText = "推荐时间";
             gridMember.Columns["cCompany"].HeaderText = "任职公司";
             gridMember.Columns["cRecomm"].HeaderText = "推荐人";
+            gridMember.Columns["Status"].HeaderText = "会员状态";
             gridMember.Columns["cTimeStamp"].HeaderText = "时间戳";
             gridMember.Columns["cTimeStamp"].Visible = false;
             gridMember.Columns["cGUID"].HeaderText = "编号";

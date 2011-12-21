@@ -11,7 +11,7 @@ namespace TS.PRS.MemberMan.Dao
     internal class MembersDao:BaseDao
     {
         private static string SQL_ALL = "select * from CM_Member mem  ";
-        private static string SQL_LIST = "select mem.cCode,mem.cName,mem.cId,CONVERT(varchar(100), mem.dRecommendDate, 23) dRecommendDate,cust.cName cCompany,CASE WHEN recom.cName IS NULL THEN '无' ELSE recom.cName END cRecomm,mem.cGUID,mem.cTimeStamp from CM_Member mem left join CM_Member recom on mem.cRecomMember = recom.cCode left join CM_Customer cust on mem.cCompany = cust.cCode";
+        private static string SQL_LIST = "select mem.cCode,mem.cName,mem.cId,CONVERT(varchar(100), mem.dRecommendDate, 23) dRecommendDate,cust.cName cCompany,CASE WHEN recom.cName IS NULL THEN '无' ELSE recom.cName END cRecomm,mem.cGUID,mem.cTimeStamp,CASE WHEN mem.iForbidden = 1 THEN '离职' ELSE '在职' END as Status from CM_Member mem left join CM_Member recom on mem.cRecomMember = recom.cCode left join CM_Customer cust on mem.cCompany = cust.cCode";
         private static string SQL_MAXNUM = "select top 1 cCode from CM_Member order by cCode desc ";
         private static string TABLE = "CM_Member";
         private static string TABLE_RECOMMEND = "MEM_MemberRecommend";
