@@ -10,7 +10,7 @@ namespace TS.Sys.Platform.Widgets.Refer.Control
     public class DataControl:TextBox
     {
         #region 成员变量
-        private const int WM_LBUTTONDOWN = 0x201, WM_LBUTTONDBLCLK = 0x203;
+        private const int WM_LBUTTONDOWN = 0x201, WM_LBUTTONDBLCLK = 0x203, WM_KILLFOCUS = 0x8, WM_GETTEXT = 0xd;
         ToolStripControlHost dataGridViewHost; 
         ToolStripDropDown dropDown;         
         private Hashtable _referValue;
@@ -391,6 +391,14 @@ namespace TS.Sys.Platform.Widgets.Refer.Control
         {
 
             base.WndProc(ref m);
+            if (m.Msg.Equals(WM_GETTEXT) || m.Msg.Equals(WM_KILLFOCUS))
+            {
+                if (_IsDropShow)
+                {
+                    dropDown.Close();
+                    _IsDropShow = false;
+                }
+            }
         }
         protected override void Dispose(bool disposing)
         {
